@@ -1,0 +1,272 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080d1a">
+<title>Natz1122Labs | Innovation for Everyone</title>
+<meta name="description" content="Natz1122Labs builds useful digital tools, smart solutions and innovative technology for everyone.">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #080d1a;
+  color: #f1f5f9;
+  line-height: 1.6;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 7%;
+  border-bottom: 1px solid #1e293b;
+}
+
+.logo {
+  font-size: 23px;
+  font-weight: bold;
+  color: #38bdf8;
+}
+
+nav a {
+  color: #cbd5e1;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 14px;
+}
+
+nav a:hover {
+  color: #38bdf8;
+}
+
+.hero {
+  text-align: center;
+  padding: 100px 20px 85px;
+  background: radial-gradient(ellipse at top, #12345b, #080d1a 70%);
+}
+
+.tag {
+  color: #38bdf8;
+  letter-spacing: 3px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.hero h1 {
+  font-size: clamp(38px, 8vw, 65px);
+  margin: 20px 0;
+  line-height: 1.15;
+}
+
+.hero h1 span {
+  color: #38bdf8;
+}
+
+.hero p {
+  max-width: 600px;
+  margin: 0 auto 30px;
+  color: #aab8cc;
+  font-size: 17px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 13px 27px;
+  background: #0284c7;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background: #0ea5e9;
+}
+
+section {
+  padding: 65px 7%;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 12px;
+}
+
+.section-desc {
+  text-align: center;
+  color: #94a3b8;
+  margin-bottom: 35px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.card {
+  background: #111c30;
+  border: 1px solid #263850;
+  padding: 27px;
+  border-radius: 14px;
+  transition: 0.2s;
+}
+
+.card:hover {
+  border-color: #38bdf8;
+  transform: translateY(-4px);
+}
+
+.card .emoji {
+  font-size: 32px;
+}
+
+.card h3 {
+  margin: 13px 0 8px;
+  color: #38bdf8;
+}
+
+.card p {
+  color: #aab8cc;
+  font-size: 14px;
+}
+
+.about {
+  text-align: center;
+  background: #0d1729;
+}
+
+.about p {
+  max-width: 700px;
+  margin: 15px auto;
+  color: #aab8cc;
+}
+
+.contact {
+  text-align: center;
+}
+
+.contact p {
+  color: #aab8cc;
+  margin: 12px 0 25px;
+}
+
+footer {
+  text-align: center;
+  padding: 25px 15px;
+  border-top: 1px solid #1e293b;
+  color: #64748b;
+  font-size: 13px;
+}
+
+@media(max-width: 600px) {
+  header {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  nav a {
+    margin: 0 8px;
+  }
+
+  .hero {
+    padding: 75px 18px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">Natz1122Labs</div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#tools">Tools</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="tag">WELCOME TO THE FUTURE</div>
+  <h1>Innovation for <span>Everyone.</span></h1>
+  <p>
+    Building useful digital tools, intelligent solutions,
+    and creative technology to make everyday life easier.
+  </p>
+  <a href="#tools" class="btn">Explore Our Vision</a>
+</section>
+
+<section id="tools">
+  <h2 class="section-title">What We're Building</h2>
+  <p class="section-desc">
+    Smart ideas. Useful technology. Endless possibilities.
+  </p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="emoji">🤖</div>
+      <h3>AI Solutions</h3>
+      <p>Exploring intelligent tools that help people work smarter and achieve more.</p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">⚡</div>
+      <h3>Productivity Tools</h3>
+      <p>Simple digital solutions designed to make everyday tasks easier.</p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">🌐</div>
+      <h3>Web Innovation</h3>
+      <p>Creating accessible web experiences for people around the world.</p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">💡</div>
+      <h3>Future Projects</h3>
+      <p>Turning creative ideas into practical digital products.</p>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <h2 class="section-title">About Natz1122Labs</h2>
+  <p>
+    Natz1122Labs is an independent digital innovation project
+    focused on creating useful technology for everyone.
+    Our mission is simple: make technology more accessible,
+    practical, and helpful.
+  </p>
+  <p><strong>Dream Big. Build Smart. Innovate Together.</strong></p>
+</section>
+
+<section class="contact" id="contact">
+  <h2 class="section-title">Let's Build the Future</h2>
+  <p>Have an idea or want to follow our journey?</p>
+  <a class="btn" href="https://github.com/Natz1122Labs">
+    Visit Our GitHub
+  </a>
+</section>
+</main>
+
+<footer>
+  © 2026 Natz1122Labs. All Rights Reserved.
+  <br>Building useful digital tools for everyone.
+</footer>
+
+</body>
+</html>
