@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080d1a">
+
+<title>Natz1122Labs | Digital Innovation for Everyone</title>
+
+<meta name="description" content="Explore Natz1122Labs free digital tools, including our Global Translator and Smart Calculator. Useful technology for everyone.">
+
+<style>
+:root {
+  --bg: #080d1a;
+  --panel: #111c30;
+  --panel2: #0d1729;
+  --blue: #38bdf8;
+  --blue-dark: #0284c7;
+  --text: #f1f5f9;
+  --muted: #aab8cc;
+  --border: #263850;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 7%;
+  border-bottom: 1px solid #1e293b;
+  background: rgba(8,13,26,0.96);
+}
+
+.logo {
+  font-size: 23px;
+  font-weight: bold;
+  color: var(--blue);
+  text-decoration: none;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+nav a {
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+nav a:hover {
+  color: var(--blue);
+}
+
+.hero {
+  text-align: center;
+  padding: 105px 20px 95px;
+  background:
+    radial-gradient(ellipse at top, #12345b, transparent 70%),
+    var(--bg);
+}
+
+.tag {
+  color: var(--blue);
+  letter-spacing: 3px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.hero h1 {
+  font-size: clamp(38px, 8vw, 66px);
+  margin: 20px 0;
+  line-height: 1.15;
+}
+
+.hero h1 span {
+  color: var(--blue);
+}
+
+.hero p {
+  max-width: 650px;
+  margin: 0 auto 32px;
+  color: var(--muted);
+  font-size: 17px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 13px 27px;
+  background: var(--blue-dark);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  background: #0ea5e9;
+  transform: translateY(-2px);
+}
+
+section {
+  padding: 75px 7%;
+  scroll-margin-top: 20px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: clamp(26px, 5vw, 34px);
+  margin-bottom: 12px;
+}
+
+.section-desc {
+  text-align: center;
+  color: #94a3b8;
+  margin: 0 auto 38px;
+  max-width: 650px;
+}
+
+.tools-section {
+  background: #0a1222;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 22px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  padding: 28px;
+  border-radius: 15px;
+  transition: 0.25s;
+}
+
+.card:hover {
+  border-color: var(--blue);
+  transform: translateY(-5px);
+}
+
+.card .emoji {
+  font-size: 38px;
+}
+
+.card h3 {
+  margin: 13px 0 8px;
+  color: var(--blue);
+  font-size: 21px;
+}
+
+.card p {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.card-link {
+  display: inline-block;
+  padding: 10px 18px;
+  background: #075985;
+  color: white;
+  text-decoration: none;
+  border-radius: 7px;
+  font-weight: bold;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.card-link:hover {
+  background: #0284c7;
+}
+
+.coming-soon {
+  display: inline-block;
+  color: #94a3b8;
+  font-size: 12px;
+  border: 1px solid #475569;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+.about {
+  text-align: center;
+  background: var(--panel2);
+}
+
+.about p {
+  max-width: 720px;
+  margin: 15px auto;
+  color: var(--muted);
+}
+
+.about strong {
+  color: var(--blue);
+}
+
+.contact {
+  text-align: center;
+}
+
+.contact p {
+  color: var(--muted);
+  margin: 12px 0 25px;
+}
+
+footer {
+  text-align: center;
+  padding: 28px 15px;
+  border-top: 1px solid #1e293b;
+  color: #64748b;
+  font-size: 13px;
+}
+
+footer a {
+  color: var(--blue);
+  text-decoration: none;
+}
+
+@media(max-width: 600px) {
+  header {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  nav {
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .hero {
+    padding: 75px 18px;
+  }
+
+  section {
+    padding: 60px 6%;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a class="logo" href="#home">Natz1122Labs</a>
+
+  <nav aria-label="Main navigation">
+    <a href="#home">Home</a>
+    <a href="#ai-tools">AI Tools</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="tag">WELCOME TO NATZ1122LABS</div>
+
+  <h1>
+    Innovation for <span>Everyone.</span>
+  </h1>
+
+  <p>
+    Discover useful digital tools and smart solutions
+    designed to make everyday life easier.
+    Technology should be simple, accessible, and helpful to everyone.
+  </p>
+
+  <a href="#ai-tools" class="btn">Explore Our AI Tools</a>
+</section>
+
+<!-- AI TOOLS -->
+<section class="tools-section" id="ai-tools">
+
+  <h2 class="section-title">Our AI Tools</h2>
+
+  <p class="section-desc">
+    Explore our growing collection of practical digital tools.
+    Simple to use. Built for everyone.
+  </p>
+
+  <div class="cards">
+
+    <!-- GLOBAL TRANSLATOR -->
+    <div class="card">
+      <div class="emoji">🌍</div>
+
+      <h3>Global Translator</h3>
+
+      <p>
+        Translate text between languages and
+        communicate more easily with people around the world.
+      </p>
+
+      <a href="translator.html" class="card-link">
+        Open Translator →
+      </a>
+    </div>
+
+    <!-- SMART CALCULATOR -->
+    <div class="card">
+      <div class="emoji">🧮</div>
+
+      <h3>Smart Calculator</h3>
+
+      <p>
+        Perform everyday calculations quickly
+        with our convenient online calculator.
+      </p>
+
+      <a href="calculator.html" class="card-link">
+        Open Calculator →
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- FUTURE PROJECTS -->
+<section id="projects">
+
+  <h2 class="section-title">What's Coming Next</h2>
+
+  <p class="section-desc">
+    We're continuously exploring new ideas
+    to bring more useful digital experiences to everyone.
+  </p>
+
+  <div class="cards">
+
+    <div class="card">
+      <div class="emoji">🤖</div>
+      <h3>AI Solutions</h3>
+      <p>
+        Exploring intelligent digital experiences
+        that help people work smarter.
+      </p>
+      <span class="coming-soon">Future Development</span>
+    </div>
+
+    <div class="card">
+      <div class="emoji">⚡</div>
+      <h3>Productivity Tools</h3>
+      <p>
+        Practical solutions designed
+        to simplify everyday tasks.
+      </p>
+      <span class="coming-soon">Future Development</span>
+    </div>
+
+    <div class="card">
+      <div class="emoji">💡</div>
+      <h3>New Innovations</h3>
+      <p>
+        Turning creative ideas into
+        useful digital products.
+      </p>
+      <span class="coming-soon">Future Development</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+
+  <h2 class="section-title">About Natz1122Labs</h2>
+
+  <p>
+    Natz1122Labs is an independent digital innovation project
+    focused on creating practical and accessible technology.
+    Our goal is to develop useful online tools
+    that make everyday activities easier for people everywhere.
+  </p>
+
+  <p>
+    <strong>Dream Big. Build Smart. Innovate Together.</strong>
+  </p>
+
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+
+  <h2 class="section-title">Let's Build the Future</h2>
+
+  <p>
+    Follow our journey and explore our growing collection
+    of digital projects.
+  </p>
+
+  <a
+    class="btn"
+    href="https://github.com/Natz1122Labs"
+    target="_blank"
+    rel="noopener noreferrer">
+    Visit Our GitHub →
+  </a>
+
+</section>
+
+</main>
+
+<footer>
+  © 2026 Natz1122Labs. All Rights Reserved.
+  <br>
+  Building useful digital tools for everyone.
+  <br>
+  <a href="#home">Back to Top ↑</a>
+</footer>
+
+</body>
+</html>
