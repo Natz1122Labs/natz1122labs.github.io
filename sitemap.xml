@@ -4,8 +4,14 @@
 
   <url>
     <loc>https://natz1122labs.github.io/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://natz1122labs.github.io/calculator.html</loc>
+  </url>
+
+  <url>
+    <loc>https://natz1122labs.github.io/translator.html</loc>
   </url>
 
 </urlset>
