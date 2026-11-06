@@ -381,6 +381,372 @@ footer a {
 
 </section>
 
+<!-- NATZ1122LABS GLOBAL WEATHER -->
+<section id="global-weather">
+  <style>
+    #global-weather {
+      padding: 35px 18px;
+      margin: 25px auto;
+      max-width: 1000px;
+      border-radius: 20px;
+      background: linear-gradient(145deg, #102b50, #176b91);
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    #global-weather h2 {
+      text-align: center;
+      font-size: 28px;
+    }
+
+    #global-weather .gw-subtitle {
+      text-align: center;
+      color: #d8edff;
+    }
+
+    #global-weather .gw-search {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 22px 0;
+    }
+
+    #global-weather input {
+      flex: 1;
+      min-width: 160px;
+      padding: 13px;
+      border: 0;
+      border-radius: 9px;
+      font-size: 16px;
+    }
+
+    #global-weather button {
+      padding: 12px 16px;
+      border: 0;
+      border-radius: 9px;
+      background: #ffd166;
+      color: #172b43;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #global-weather button:hover {
+      opacity: .85;
+    }
+
+    #global-weather .gw-location-btn {
+      width: 100%;
+      margin-bottom: 18px;
+      background: #45d6b1;
+    }
+
+    #global-weather .gw-current {
+      background: rgba(255,255,255,.12);
+      padding: 22px;
+      border-radius: 16px;
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    #global-weather .gw-temp {
+      font-size: 55px;
+      font-weight: bold;
+      margin: 12px;
+    }
+
+    #global-weather .gw-icon {
+      font-size: 55px;
+    }
+
+    #global-weather .gw-details {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    #global-weather .gw-detail {
+      background: rgba(255,255,255,.13);
+      padding: 14px 5px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    #global-weather .gw-forecast {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(105px, 1fr));
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    #global-weather .gw-day {
+      background: rgba(255,255,255,.13);
+      padding: 13px 5px;
+      text-align: center;
+      border-radius: 12px;
+    }
+
+    #global-weather .gw-day-icon {
+      font-size: 28px;
+      margin: 8px 0;
+    }
+
+    #global-weather .gw-status {
+      text-align: center;
+      margin: 12px 0;
+      color: #fff2b3;
+    }
+
+    #global-weather .gw-footer {
+      text-align: center;
+      font-size: 12px;
+      color: #c9e5f5;
+      margin-top: 22px;
+    }
+
+    @media(max-width:480px) {
+      #global-weather .gw-details {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+
+  <h2>🌍 Global Weather</h2>
+  <p class="gw-subtitle">
+    Explore weather conditions around the world!
+  </p>
+
+  <div class="gw-search">
+    <input
+      type="text"
+      id="gw-city"
+      placeholder="Search city (e.g. Manila)"
+      aria-label="Search city"
+    >
+    <button onclick="gwSearch()">Search</button>
+  </div>
+
+  <button class="gw-location-btn" onclick="gwLocate()">
+    📍 Use My Location
+  </button>
+
+  <div class="gw-status" id="gw-status">
+    Detecting your local weather...
+  </div>
+
+  <div class="gw-current">
+    <h3 id="gw-place">Your Weather</h3>
+    <div class="gw-icon" id="gw-icon">🌤️</div>
+    <div class="gw-temp" id="gw-temp">--°C</div>
+    <div id="gw-condition">Waiting for weather data...</div>
+
+    <div class="gw-details">
+      <div class="gw-detail">
+        🌡️<br>Feels like<br>
+        <strong id="gw-feels">--°C</strong>
+      </div>
+      <div class="gw-detail">
+        💧<br>Humidity<br>
+        <strong id="gw-humidity">--%</strong>
+      </div>
+      <div class="gw-detail">
+        💨<br>Wind<br>
+        <strong id="gw-wind">-- km/h</strong>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="text-align:center;margin-top:28px;">
+    📅 7-Day Forecast
+  </h3>
+
+  <div class="gw-forecast" id="gw-forecast">
+    <div class="gw-day">Loading forecast...</div>
+  </div>
+
+  <div class="gw-footer">
+    Weather data provided by Open-Meteo
+    <br>
+    <a href="https://open-meteo.com/"
+       target="_blank"
+       rel="noopener"
+       style="color:#bceaff;">
+       Open-Meteo Weather API
+    </a>
+  </div>
+</section>
+
+<script>
+(function () {
+  const prefix = "gw-";
+
+  function weatherInfo(code) {
+    if (code === 0) return ["☀️", "Clear sky"];
+    if (code <= 2) return ["🌤️", "Partly cloudy"];
+    if (code === 3) return ["☁️", "Overcast"];
+    if (code <= 48) return ["🌫️", "Foggy"];
+    if (code <= 57) return ["🌦️", "Drizzle"];
+    if (code <= 67) return ["🌧️", "Rain"];
+    if (code <= 77) return ["❄️", "Snow"];
+    if (code <= 82) return ["🌧️", "Rain showers"];
+    if (code <= 86) return ["🌨️", "Snow showers"];
+    if (code <= 99) return ["⛈️", "Thunderstorms"];
+    return ["🌤️", "Unknown conditions"];
+  }
+
+  function showStatus(message) {
+    document.getElementById("gw-status").textContent = message;
+  }
+
+  async function getWeather(lat, lon, place) {
+    showStatus("Getting the latest weather...");
+
+    try {
+      const url =
+        "https://api.open-meteo.com/v1/forecast" +
+        "?latitude=" + lat +
+        "&longitude=" + lon +
+        "&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m" +
+        "&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max" +
+        "&timezone=auto&forecast_days=7";
+
+      const response = await fetch(url);
+
+      if (!response.ok) throw new Error("Weather service unavailable");
+
+      const data = await response.json();
+      const current = data.current;
+      const daily = data.daily;
+      const info = weatherInfo(current.weather_code);
+
+      document.getElementById("gw-place").textContent = "📍 " + place;
+      document.getElementById("gw-icon").textContent = info[0];
+      document.getElementById("gw-temp").textContent =
+        Math.round(current.temperature_2m) + "°C";
+      document.getElementById("gw-condition").textContent = info[1];
+
+      document.getElementById("gw-feels").textContent =
+        Math.round(current.apparent_temperature) + "°C";
+
+      document.getElementById("gw-humidity").textContent =
+        current.relative_humidity_2m + "%";
+
+      document.getElementById("gw-wind").textContent =
+        current.wind_speed_10m + " km/h";
+
+      let forecastHTML = "";
+
+      for (let i = 0; i < daily.time.length; i++) {
+        const day = new Date(daily.time[i] + "T12:00:00");
+        const dayName = day.toLocaleDateString("en-US", {
+          weekday: "short"
+        });
+        const dayInfo = weatherInfo(daily.weather_code[i]);
+
+        forecastHTML += `
+          <div class="gw-day">
+            <strong>${dayName}</strong>
+            <div class="gw-day-icon">${dayInfo[0]}</div>
+            <div>${dayInfo[1]}</div>
+            <strong>
+              ${Math.round(daily.temperature_2m_max[i])}° /
+              ${Math.round(daily.temperature_2m_min[i])}°
+            </strong>
+            <div>🌧️ ${daily.precipitation_probability_max[i] ?? "--"}%</div>
+          </div>
+        `;
+      }
+
+      document.getElementById("gw-forecast").innerHTML = forecastHTML;
+      showStatus("Weather successfully updated!");
+    } catch (error) {
+      showStatus("Unable to load weather. Please try again.");
+      console.error(error);
+    }
+  }
+
+  async function searchCity() {
+    const city = document.getElementById("gw-city").value.trim();
+
+    if (!city) {
+      showStatus("Please enter a city name.");
+      return;
+    }
+
+    showStatus("Searching for " + city + "...");
+
+    try {
+      const url =
+        "https://geocoding-api.open-meteo.com/v1/search?name=" +
+        encodeURIComponent(city) +
+        "&count=1&language=en&format=json";
+
+      const response = await fetch(url);
+      if (!response.ok) throw new Error("Search failed");
+
+      const data = await response.json();
+
+      if (!data.results || !data.results.length) {
+        showStatus("City not found. Please try another city.");
+        return;
+      }
+
+      const result = data.results[0];
+      const place = [result.name, result.admin1, result.country]
+        .filter(Boolean)
+        .join(", ");
+
+      getWeather(result.latitude, result.longitude, place);
+    } catch (error) {
+      showStatus("City search failed. Please try again.");
+      console.error(error);
+    }
+  }
+
+  function locateUser() {
+    if (!navigator.geolocation) {
+      showStatus("Location detection is not supported by your browser.");
+      return;
+    }
+
+    showStatus("Requesting your location permission...");
+
+    navigator.geolocation.getCurrentPosition(
+      position => {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+
+        getWeather(
+          lat,
+          lon,
+          "Your Current Location"
+        );
+      },
+      error => {
+        showStatus(
+          error.code === 1
+            ? "Location permission denied. Search for a city instead."
+            : "Unable to detect location. Please search for a city."
+        );
+      },
+      { enableHighAccuracy: false, timeout: 12000 }
+    );
+  }
+
+  window.gwSearch = searchCity;
+  window.gwLocate = locateUser;
+
+  document.getElementById("gw-city").addEventListener("keydown", event => {
+    if (event.key === "Enter") searchCity();
+  });
+
+  // Automatically request local weather when the page opens.
+  locateUser();
+
+})();
+</script>
+<!-- END NATZ1122LABS GLOBAL WEATHER -->
+
 <!-- FUTURE PROJECTS -->
 <section id="projects">
 
