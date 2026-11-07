@@ -1,0 +1,236 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2563eb">
+<title>Kids Learning Center | Natz1122Labs</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f0f7ff;
+  color: #24324a;
+}
+
+header {
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  color: white;
+  text-align: center;
+  padding: 35px 15px;
+}
+
+header h1 {
+  font-size: 30px;
+  margin: 10px 0;
+}
+
+header p {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.logo {
+  font-size: 48px;
+}
+
+.container {
+  max-width: 950px;
+  margin: auto;
+  padding: 22px 15px;
+}
+
+.welcome {
+  background: white;
+  padding: 22px;
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: 0 4px 14px #00000010;
+}
+
+.welcome h2 {
+  color: #2563eb;
+}
+
+.subjects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+  gap: 15px;
+  margin-top: 22px;
+}
+
+.subject {
+  background: white;
+  padding: 20px 12px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 3px 12px #00000010;
+}
+
+.subject .emoji {
+  font-size: 42px;
+}
+
+.subject h3 {
+  margin: 10px 0;
+}
+
+.subject p {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+button {
+  border: none;
+  background: #2563eb;
+  color: white;
+  padding: 11px 17px;
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1d4ed8;
+}
+
+.challenge {
+  margin-top: 25px;
+  background: #fff7d6;
+  padding: 22px;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.challenge button {
+  margin: 5px;
+  background: #d97706;
+}
+
+#answer {
+  font-weight: bold;
+  margin-top: 12px;
+}
+
+footer {
+  margin-top: 30px;
+  padding: 22px;
+  background: #1e293b;
+  color: white;
+  text-align: center;
+  font-size: 13px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">🎓📚</div>
+  <h1>Kids Learning Center</h1>
+  <p>Welcome to a world of fun, knowledge and discovery!</p>
+  <strong>Powered by Natz1122Labs</strong>
+</header>
+
+<main class="container">
+
+  <section class="welcome">
+    <h2>Hello, Young Learners! 👋</h2>
+    <p>
+      Are you ready to explore, discover and learn
+      something new today?
+    </p>
+    <p>Learning is fun when we do it together! 🌟</p>
+  </section>
+
+  <h2 style="text-align:center;margin-top:30px;">
+    🌈 Explore Our Learning Subjects
+  </h2>
+
+  <section class="subjects">
+
+    <div class="subject">
+      <div class="emoji">🔢</div>
+      <h3>Mathematics</h3>
+      <p>Numbers, counting, addition and subtraction.</p>
+      <button onclick="showInfo('Mathematics')">
+        Explore
+      </button>
+    </div>
+
+    <div class="subject">
+      <div class="emoji">🔤</div>
+      <h3>English</h3>
+      <p>Alphabet, words, spelling and grammar.</p>
+      <button onclick="showInfo('English')">
+        Explore
+      </button>
+    </div>
+
+    <div class="subject">
+      <div class="emoji">🔬</div>
+      <h3>Science</h3>
+      <p>Animals, plants, nature and discoveries.</p>
+      <button onclick="showInfo('Science')">
+        Explore
+      </button>
+    </div>
+
+    <div class="subject">
+      <div class="emoji">🌍</div>
+      <h3>History</h3>
+      <p>Discover people, places and the past.</p>
+      <button onclick="showInfo('History')">
+        Explore
+      </button>
+    </div>
+
+  </section>
+
+  <section class="challenge">
+    <h2>🧠 Daily Math Challenge</h2>
+    <p>What is 5 + 3?</p>
+
+    <button onclick="checkAnswer(7)">7</button>
+    <button onclick="checkAnswer(8)">8</button>
+    <button onclick="checkAnswer(9)">9</button>
+
+    <div id="answer" aria-live="polite"></div>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2026 Natz1122Labs</p>
+  <p>Learn • Explore • Discover • Grow</p>
+</footer>
+
+<script>
+function showInfo(subject) {
+  alert(
+    subject +
+    " Learning Center is coming soon! Stay curious! 🌟"
+  );
+}
+
+function checkAnswer(number) {
+  const result = document.getElementById("answer");
+
+  if (number === 8) {
+    result.textContent = "🎉 Excellent! Your answer is correct!";
+    result.style.color = "green";
+  } else {
+    result.textContent = "😊 Good try! Please try again.";
+    result.style.color = "#b45309";
+  }
+}
+</script>
+
+</body>
+</html>
