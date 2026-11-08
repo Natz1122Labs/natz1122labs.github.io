@@ -7,8 +7,18 @@
 
 <title>Natz1122Labs | Digital Innovation for Everyone</title>
 
-<meta name="description" content="Explore Natz1122Labs free digital tools, including our Global Translator and Smart Calculator. Useful technology for everyone.">
+<meta name="description" content="Discover Natz1122Labs: free digital tools, global weather, world news, AI innovations and fun educational experiences for everyone.">
+
+<meta name="keywords" content="Natz1122Labs, AI tools, digital innovation, global news, global weather, kids learning, online tools">
+
+<meta name="author" content="Natz1122Labs">
+
+<meta property="og:title" content="Natz1122Labs | Digital Innovation for Everyone">
+<meta property="og:description" content="Explore useful digital tools, global weather, news and educational experiences.">
+<meta property="og:type" content="website">
+
 <link rel="manifest" href="/manifest.json">
+
 <style>
 :root {
   --bg: #080d1a;
@@ -29,6 +39,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 25px;
 }
 
 body {
@@ -38,13 +49,21 @@ body {
   line-height: 1.6;
 }
 
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 20px;
   padding: 18px 7%;
   border-bottom: 1px solid #1e293b;
-  background: rgba(8,13,26,0.96);
+  background: rgba(8,13,26,0.97);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .logo {
@@ -52,18 +71,20 @@ header {
   font-weight: bold;
   color: var(--blue);
   text-decoration: none;
+  white-space: nowrap;
 }
 
 nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 17px;
+  align-items: center;
 }
 
 nav a {
   color: #cbd5e1;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 13px;
   transition: 0.2s;
 }
 
@@ -97,7 +118,7 @@ nav a:hover {
 }
 
 .hero p {
-  max-width: 650px;
+  max-width: 680px;
   margin: 0 auto 32px;
   color: var(--muted);
   font-size: 17px;
@@ -105,7 +126,7 @@ nav a:hover {
 
 .btn {
   display: inline-block;
-  padding: 13px 27px;
+  padding: 13px 25px;
   background: var(--blue-dark);
   color: white;
   text-decoration: none;
@@ -121,7 +142,7 @@ nav a:hover {
 
 section {
   padding: 75px 7%;
-  scroll-margin-top: 20px;
+  scroll-margin-top: 85px;
 }
 
 .section-title {
@@ -134,7 +155,7 @@ section {
   text-align: center;
   color: #94a3b8;
   margin: 0 auto 38px;
-  max-width: 650px;
+  max-width: 680px;
 }
 
 .tools-section {
@@ -145,31 +166,31 @@ section {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 22px;
-  max-width: 1100px;
+  max-width: 1150px;
   margin: auto;
 }
 
 .card {
   background: var(--panel);
   border: 1px solid var(--border);
-  padding: 28px;
+  padding: 27px;
   border-radius: 15px;
   transition: 0.25s;
 }
 
 .card:hover {
   border-color: var(--blue);
-  transform: translateY(-5px);
+  transform: translateY(-4px);
 }
 
-.card .emoji {
+.emoji {
   font-size: 38px;
 }
 
 .card h3 {
   margin: 13px 0 8px;
   color: var(--blue);
-  font-size: 21px;
+  font-size: 20px;
 }
 
 .card p {
@@ -180,14 +201,13 @@ section {
 
 .card-link {
   display: inline-block;
-  padding: 10px 18px;
+  padding: 10px 17px;
   background: #075985;
   color: white;
   text-decoration: none;
   border-radius: 7px;
   font-weight: bold;
   font-size: 14px;
-  transition: 0.2s;
 }
 
 .card-link:hover {
@@ -203,13 +223,208 @@ section {
   border-radius: 20px;
 }
 
+/* GLOBAL NEWS */
+
+.news-section {
+  background: var(--panel2);
+}
+
+.news-banner {
+  max-width: 1100px;
+  margin: auto;
+  padding: 25px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #102b50, #075985);
+  text-align: center;
+}
+
+.news-banner p {
+  color: #dbeafe;
+  margin: 8px 0 18px;
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+  max-width: 1100px;
+  margin: 25px auto 0;
+}
+
+.news-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  padding: 23px;
+}
+
+.news-card h3 {
+  color: var(--blue);
+  margin-bottom: 10px;
+}
+
+.news-card p {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+/* GLOBAL WEATHER */
+
+#global-weather {
+  padding: 35px 22px;
+  margin: 35px auto;
+  max-width: 1100px;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #102b50, #176b91);
+  color: white;
+}
+
+#global-weather h2 {
+  text-align: center;
+  font-size: 28px;
+}
+
+.gw-subtitle {
+  text-align: center;
+  color: #d8edff;
+}
+
+.gw-search {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 22px 0;
+}
+
+.gw-search input {
+  flex: 1;
+  min-width: 160px;
+  padding: 13px;
+  border: 0;
+  border-radius: 9px;
+  font-size: 16px;
+}
+
+.gw-search button,
+.gw-location-btn {
+  padding: 12px 17px;
+  border: 0;
+  border-radius: 9px;
+  background: #ffd166;
+  color: #172b43;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.gw-location-btn {
+  width: 100%;
+  margin-bottom: 18px;
+  background: #45d6b1;
+}
+
+.gw-status {
+  text-align: center;
+  margin: 12px 0;
+  color: #fff2b3;
+}
+
+.gw-current {
+  background: rgba(255,255,255,.12);
+  padding: 22px;
+  border-radius: 16px;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.gw-temp {
+  font-size: 55px;
+  font-weight: bold;
+  margin: 12px;
+}
+
+.gw-icon {
+  font-size: 55px;
+}
+
+.gw-details {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.gw-detail {
+  background: rgba(255,255,255,.13);
+  padding: 14px 5px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.gw-forecast {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(105px, 1fr));
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.gw-day {
+  background: rgba(255,255,255,.13);
+  padding: 13px 5px;
+  text-align: center;
+  border-radius: 12px;
+  font-size: 13px;
+}
+
+.gw-day-icon {
+  font-size: 28px;
+  margin: 8px 0;
+}
+
+.gw-footer {
+  text-align: center;
+  font-size: 12px;
+  color: #c9e5f5;
+  margin-top: 22px;
+}
+
+.gw-footer a {
+  color: #bceaff;
+}
+
+/* BUSINESS DEVELOPMENT */
+
+.business-section {
+  background: #0a1222;
+}
+
+.business-intro {
+  max-width: 850px;
+  text-align: center;
+  margin: 0 auto 30px;
+  color: var(--muted);
+}
+
+.business-note {
+  max-width: 900px;
+  margin: 30px auto 0;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--muted);
+  text-align: center;
+  font-size: 13px;
+}
+
+/* ABOUT */
+
 .about {
   text-align: center;
   background: var(--panel2);
 }
 
 .about p {
-  max-width: 720px;
+  max-width: 750px;
   margin: 15px auto;
   color: var(--muted);
 }
@@ -217,6 +432,8 @@ section {
 .about strong {
   color: var(--blue);
 }
+
+/* CONTACT */
 
 .contact {
   text-align: center;
@@ -229,7 +446,7 @@ section {
 
 footer {
   text-align: center;
-  padding: 28px 15px;
+  padding: 30px 15px;
   border-top: 1px solid #1e293b;
   color: #64748b;
   font-size: 13px;
@@ -240,15 +457,20 @@ footer a {
   text-decoration: none;
 }
 
-@media(max-width: 600px) {
+@media(max-width: 760px) {
   header {
     flex-direction: column;
-    gap: 15px;
+    gap: 13px;
+    padding: 15px 5%;
   }
 
   nav {
     justify-content: center;
-    gap: 15px;
+    gap: 12px;
+  }
+
+  nav a {
+    font-size: 12px;
   }
 
   .hero {
@@ -262,6 +484,20 @@ footer a {
   .cards {
     grid-template-columns: 1fr;
   }
+
+  .gw-details {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media(prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    transition: none !important;
+  }
 }
 </style>
 </head>
@@ -273,9 +509,11 @@ footer a {
 
   <nav aria-label="Main navigation">
     <a href="#home">Home</a>
-    <a href="#global-news">Global News</a>
+    <a href="#global-news">News</a>
+    <a href="#global-weather">Weather</a>
     <a href="#ai-tools">AI Tools</a>
-        <a href="#academy">Kid Academy</a>
+    <a href="#academy">Kid Academy</a>
+    <a href="#business">Business</a>
     <a href="#about">About</a>
     <a href="#contact">Contact</a>
   </nav>
@@ -284,7 +522,9 @@ footer a {
 <main>
 
 <!-- HERO -->
+
 <section class="hero" id="home">
+
   <div class="tag">WELCOME TO NATZ1122LABS</div>
 
   <h1>
@@ -292,18 +532,234 @@ footer a {
   </h1>
 
   <p>
-    Discover useful digital tools and smart solutions
-    designed to make everyday life easier.
-    Technology should be simple, accessible, and helpful to everyone.
+    Discover useful digital tools, intelligent solutions,
+    global information and educational experiences.
+    Technology should be simple, accessible and helpful to everyone.
   </p>
 
-  <a href="#ai-tools" class="btn">Explore Our AI Tools</a>
+  <a href="#ai-tools" class="btn">Explore Our Digital Tools</a>
+
+</section>
+
+<!-- GLOBAL NEWS -->
+
+<section class="news-section" id="global-news">
+
+  <h2 class="section-title">📰 Global News Center</h2>
+
+  <p class="section-desc">
+    Stay connected with important developments
+    from the Philippines and around the world.
+  </p>
+
+  <div class="news-banner">
+
+    <h3>🌍 The World at Your Fingertips</h3>
+
+    <p>
+      Explore national, international, business,
+      technology and science headlines.
+    </p>
+
+    <a
+      href="https://news.google.com/"
+      class="btn"
+      target="_blank"
+      rel="noopener noreferrer">
+      Explore Global Headlines →
+    </a>
+
+  </div>
+
+  <div class="news-grid">
+
+    <div class="news-card">
+      <h3>🇵🇭 Philippines News</h3>
+      <p>
+        National headlines, government updates,
+        community stories and important local developments.
+      </p>
+      <a
+        href="https://news.google.com/home?hl=en-PH&gl=PH&ceid=PH:en"
+        class="card-link"
+        target="_blank"
+        rel="noopener noreferrer">
+        Read Philippines News →
+      </a>
+    </div>
+
+    <div class="news-card">
+      <h3>🌎 World News</h3>
+      <p>
+        International events, global developments
+        and stories from different countries.
+      </p>
+      <a
+        href="https://news.google.com/"
+        class="card-link"
+        target="_blank"
+        rel="noopener noreferrer">
+        Read World News →
+      </a>
+    </div>
+
+    <div class="news-card">
+      <h3>💻 Technology News</h3>
+      <p>
+        Discover the latest developments in artificial
+        intelligence, computers and digital innovation.
+      </p>
+      <a
+        href="https://news.google.com/search?q=technology"
+        class="card-link"
+        target="_blank"
+        rel="noopener noreferrer">
+        Explore Technology →
+      </a>
+    </div>
+
+    <div class="news-card">
+      <h3>📈 Business & Finance</h3>
+      <p>
+        Follow business developments, markets,
+        economic news and financial trends.
+      </p>
+      <a
+        href="https://news.google.com/search?q=business"
+        class="card-link"
+        target="_blank"
+        rel="noopener noreferrer">
+        Explore Business News →
+      </a>
+    </div>
+
+    <div class="news-card">
+      <h3>🔬 Science & Discovery</h3>
+      <p>
+        Explore scientific discoveries, space,
+        research and new innovations.
+      </p>
+      <a
+        href="https://news.google.com/search?q=science"
+        class="card-link"
+        target="_blank"
+        rel="noopener noreferrer">
+        Explore Science →
+      </a>
+    </div>
+
+    <div class="news-card">
+      <h3>⚽ Sports News</h3>
+      <p>
+        Stay informed about sports competitions,
+        teams, athletes and major sporting events.
+      </p>
+      <a
+        href="https://news.google.com/search?q=sports"
+        class="card-link"
+        target="_blank"
+        rel="noopener noreferrer">
+        Explore Sports →
+      </a>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- GLOBAL WEATHER -->
+
+<section id="global-weather">
+
+  <h2>🌍 Global Weather</h2>
+
+  <p class="gw-subtitle">
+    Explore current weather conditions around the world!
+  </p>
+
+  <div class="gw-search">
+
+    <input
+      type="text"
+      id="gw-city"
+      placeholder="Search city (e.g. Manila)"
+      aria-label="Search city"
+    >
+
+    <button type="button" id="gw-search-btn">
+      Search
+    </button>
+
+  </div>
+
+  <button
+    type="button"
+    class="gw-location-btn"
+    id="gw-location-btn">
+    📍 Use My Location
+  </button>
+
+  <div class="gw-status" id="gw-status" role="status">
+    Loading weather...
+  </div>
+
+  <div class="gw-current">
+
+    <h3 id="gw-place">Your Weather</h3>
+
+    <div class="gw-icon" id="gw-icon">🌤️</div>
+
+    <div class="gw-temp" id="gw-temp">--°C</div>
+
+    <div id="gw-condition">Waiting for weather data...</div>
+
+    <div class="gw-details">
+
+      <div class="gw-detail">
+        🌡️<br>Feels like<br>
+        <strong id="gw-feels">--°C</strong>
+      </div>
+
+      <div class="gw-detail">
+        💧<br>Humidity<br>
+        <strong id="gw-humidity">--%</strong>
+      </div>
+
+      <div class="gw-detail">
+        💨<br>Wind<br>
+        <strong id="gw-wind">-- km/h</strong>
+      </div>
+
+    </div>
+
+  </div>
+
+  <h3 style="text-align:center;margin-top:28px;">
+    📅 7-Day Forecast
+  </h3>
+
+  <div class="gw-forecast" id="gw-forecast">
+    <div class="gw-day">Loading forecast...</div>
+  </div>
+
+  <div class="gw-footer">
+    Weather data provided by Open-Meteo.
+    <br>
+    <a
+      href="https://open-meteo.com/"
+      target="_blank"
+      rel="noopener noreferrer">
+      Open-Meteo Weather API
+    </a>
+  </div>
+
 </section>
 
 <!-- AI TOOLS -->
+
 <section class="tools-section" id="ai-tools">
 
-  <h2 class="section-title">Our AI Tools</h2>
+  <h2 class="section-title">🤖 Our AI & Digital Tools</h2>
 
   <p class="section-desc">
     Explore our growing collection of practical digital tools.
@@ -312,49 +768,85 @@ footer a {
 
   <div class="cards">
 
-    <!-- GLOBAL TRANSLATOR -->
     <div class="card">
       <div class="emoji">🌍</div>
-
       <h3>Global Translator</h3>
-
       <p>
-        Translate text between languages and
-        communicate more easily with people around the world.
+        Translate text between languages
+        and communicate more easily with people around the world.
       </p>
-
       <a href="translator.html" class="card-link">
         Open Translator →
       </a>
     </div>
 
-    <!-- SMART CALCULATOR -->
     <div class="card">
       <div class="emoji">🧮</div>
-
       <h3>Smart Calculator</h3>
-
       <p>
         Perform everyday calculations quickly
         with our convenient online calculator.
       </p>
-
       <a href="calculator.html" class="card-link">
         Open Calculator →
       </a>
     </div>
 
+    <div class="card">
+      <div class="emoji">🧠</div>
+      <h3>AI Assistant</h3>
+      <p>
+        Discover intelligent digital assistance
+        and explore the possibilities of artificial intelligence.
+      </p>
+      <span class="coming-soon">Coming Soon</span>
+    </div>
+
+    <div class="card">
+      <div class="emoji">✍️</div>
+      <h3>AI Writing Tools</h3>
+      <p>
+        Explore tools for writing, creativity,
+        brainstorming and productivity.
+      </p>
+      <span class="coming-soon">Coming Soon</span>
+    </div>
+
+    <div class="card">
+      <div class="emoji">📊</div>
+      <h3>Smart Productivity</h3>
+      <p>
+        Discover digital solutions designed
+        to make everyday tasks easier.
+      </p>
+      <span class="coming-soon">Coming Soon</span>
+    </div>
+
+    <div class="card">
+      <div class="emoji">🚀</div>
+      <h3>More AI Innovations</h3>
+      <p>
+        New digital experiences and useful
+        technology are being developed.
+      </p>
+      <span class="coming-soon">Future Development</span>
+    </div>
+
   </div>
+
 </section>
 
 <!-- KID ACADEMY -->
+
 <section class="tools-section" id="academy">
 
-  <h2 class="section-title">🎓 Natz1122Labs Kid Academy</h2>
+  <h2 class="section-title">
+    🎓 Natz1122Labs Kid Academy
+  </h2>
 
   <p class="section-desc">
     Learn, Play & Grow Together!
-    Fun educational videos designed to make learning exciting for kids.
+    Fun educational experiences designed to make learning exciting.
   </p>
 
   <div class="cards">
@@ -378,383 +870,58 @@ footer a {
       </a>
     </div>
 
-  </div>
+    <div class="card">
+      <div class="emoji">🔢</div>
 
-</section>
+      <h3>Mathematics Learning Center</h3>
 
-<!-- NATZ1122LABS GLOBAL WEATHER -->
-<section id="global-weather">
-  <style>
-    #global-weather {
-      padding: 35px 18px;
-      margin: 25px auto;
-      max-width: 1000px;
-      border-radius: 20px;
-      background: linear-gradient(145deg, #102b50, #176b91);
-      color: white;
-      font-family: Arial, sans-serif;
-    }
+      <p>
+        Discover numbers, basic mathematics
+        and fun educational activities.
+      </p>
 
-    #global-weather h2 {
-      text-align: center;
-      font-size: 28px;
-    }
-
-    #global-weather .gw-subtitle {
-      text-align: center;
-      color: #d8edff;
-    }
-
-    #global-weather .gw-search {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin: 22px 0;
-    }
-
-    #global-weather input {
-      flex: 1;
-      min-width: 160px;
-      padding: 13px;
-      border: 0;
-      border-radius: 9px;
-      font-size: 16px;
-    }
-
-    #global-weather button {
-      padding: 12px 16px;
-      border: 0;
-      border-radius: 9px;
-      background: #ffd166;
-      color: #172b43;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    #global-weather button:hover {
-      opacity: .85;
-    }
-
-    #global-weather .gw-location-btn {
-      width: 100%;
-      margin-bottom: 18px;
-      background: #45d6b1;
-    }
-
-    #global-weather .gw-current {
-      background: rgba(255,255,255,.12);
-      padding: 22px;
-      border-radius: 16px;
-      text-align: center;
-      margin-top: 15px;
-    }
-
-    #global-weather .gw-temp {
-      font-size: 55px;
-      font-weight: bold;
-      margin: 12px;
-    }
-
-    #global-weather .gw-icon {
-      font-size: 55px;
-    }
-
-    #global-weather .gw-details {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-top: 20px;
-    }
-
-    #global-weather .gw-detail {
-      background: rgba(255,255,255,.13);
-      padding: 14px 5px;
-      border-radius: 10px;
-      text-align: center;
-    }
-
-    #global-weather .gw-forecast {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(105px, 1fr));
-      gap: 10px;
-      margin-top: 18px;
-    }
-
-    #global-weather .gw-day {
-      background: rgba(255,255,255,.13);
-      padding: 13px 5px;
-      text-align: center;
-      border-radius: 12px;
-    }
-
-    #global-weather .gw-day-icon {
-      font-size: 28px;
-      margin: 8px 0;
-    }
-
-    #global-weather .gw-status {
-      text-align: center;
-      margin: 12px 0;
-      color: #fff2b3;
-    }
-
-    #global-weather .gw-footer {
-      text-align: center;
-      font-size: 12px;
-      color: #c9e5f5;
-      margin-top: 22px;
-    }
-
-    @media(max-width:480px) {
-      #global-weather .gw-details {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-  </style>
-
-  <h2>🌍 Global Weather</h2>
-  <p class="gw-subtitle">
-    Explore weather conditions around the world!
-  </p>
-
-  <div class="gw-search">
-    <input
-      type="text"
-      id="gw-city"
-      placeholder="Search city (e.g. Manila)"
-      aria-label="Search city"
-    >
-    <button onclick="gwSearch()">Search</button>
-  </div>
-
-  <button class="gw-location-btn" onclick="gwLocate()">
-    📍 Use My Location
-  </button>
-
-  <div class="gw-status" id="gw-status">
-    Detecting your local weather...
-  </div>
-
-  <div class="gw-current">
-    <h3 id="gw-place">Your Weather</h3>
-    <div class="gw-icon" id="gw-icon">🌤️</div>
-    <div class="gw-temp" id="gw-temp">--°C</div>
-    <div id="gw-condition">Waiting for weather data...</div>
-
-    <div class="gw-details">
-      <div class="gw-detail">
-        🌡️<br>Feels like<br>
-        <strong id="gw-feels">--°C</strong>
-      </div>
-      <div class="gw-detail">
-        💧<br>Humidity<br>
-        <strong id="gw-humidity">--%</strong>
-      </div>
-      <div class="gw-detail">
-        💨<br>Wind<br>
-        <strong id="gw-wind">-- km/h</strong>
-      </div>
+      <a
+        href="https://natz1122labs.github.io/kids-learning/"
+        class="card-link">
+        Explore Learning Center →
+      </a>
     </div>
+
+    <div class="card">
+      <div class="emoji">📚</div>
+
+      <h3>Reading & Language</h3>
+
+      <p>
+        Build reading skills, discover words
+        and enjoy language learning.
+      </p>
+
+      <span class="coming-soon">Coming Soon</span>
+    </div>
+
+    <div class="card">
+      <div class="emoji">🎨</div>
+
+      <h3>Creative Learning</h3>
+
+      <p>
+        Encourage imagination through
+        creativity, colors and exploration.
+      </p>
+
+      <span class="coming-soon">Coming Soon</span>
+    </div>
+
   </div>
 
-  <h3 style="text-align:center;margin-top:28px;">
-    📅 7-Day Forecast
-  </h3>
-
-  <div class="gw-forecast" id="gw-forecast">
-    <div class="gw-day">Loading forecast...</div>
-  </div>
-  <div class="gw-forecast" id="gw-forecast">
-    <div class="gw-day">Loading forecast...</div>
-  </div>
-
-  <div class="gw-footer">
-    Weather data provided by Open-Meteo
-    <br>
-    <a href="https://open-meteo.com/"
-       target="_blank"
-       rel="noopener"
-       style="color:#bceaff;">
-       Open-Meteo Weather API
-    </a>
-  </div>
 </section>
-
-<script>
-(function () {
-  const prefix = "gw-";
-
-  function weatherInfo(code) {
-    if (code === 0) return ["☀️", "Clear sky"];
-    if (code <= 2) return ["🌤️", "Partly cloudy"];
-    if (code === 3) return ["☁️", "Overcast"];
-    if (code <= 48) return ["🌫️", "Foggy"];
-    if (code <= 57) return ["🌦️", "Drizzle"];
-    if (code <= 67) return ["🌧️", "Rain"];
-    if (code <= 77) return ["❄️", "Snow"];
-    if (code <= 82) return ["🌧️", "Rain showers"];
-    if (code <= 86) return ["🌨️", "Snow showers"];
-    if (code <= 99) return ["⛈️", "Thunderstorms"];
-    return ["🌤️", "Unknown conditions"];
-  }
-
-  function showStatus(message) {
-    document.getElementById("gw-status").textContent = message;
-  }
-
-  async function getWeather(lat, lon, place) {
-    showStatus("Getting the latest weather...");
-
-    try {
-      const url =
-        "https://api.open-meteo.com/v1/forecast" +
-        "?latitude=" + lat +
-        "&longitude=" + lon +
-        "&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m" +
-        "&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max" +
-        "&timezone=auto&forecast_days=7";
-
-      const response = await fetch(url);
-
-      if (!response.ok) throw new Error("Weather service unavailable");
-
-      const data = await response.json();
-      const current = data.current;
-      const daily = data.daily;
-      const info = weatherInfo(current.weather_code);
-
-      document.getElementById("gw-place").textContent = "📍 " + place;
-      document.getElementById("gw-icon").textContent = info[0];
-      document.getElementById("gw-temp").textContent =
-        Math.round(current.temperature_2m) + "°C";
-      document.getElementById("gw-condition").textContent = info[1];
-
-      document.getElementById("gw-feels").textContent =
-        Math.round(current.apparent_temperature) + "°C";
-
-      document.getElementById("gw-humidity").textContent =
-        current.relative_humidity_2m + "%";
-
-      document.getElementById("gw-wind").textContent =
-        current.wind_speed_10m + " km/h";
-
-      let forecastHTML = "";
-
-      for (let i = 0; i < daily.time.length; i++) {
-        const day = new Date(daily.time[i] + "T12:00:00");
-        const dayName = day.toLocaleDateString("en-US", {
-          weekday: "short"
-        });
-        const dayInfo = weatherInfo(daily.weather_code[i]);
-
-        forecastHTML += `
-          <div class="gw-day">
-            <strong>${dayName}</strong>
-            <div class="gw-day-icon">${dayInfo[0]}</div>
-            <div>${dayInfo[1]}</div>
-            <strong>
-              ${Math.round(daily.temperature_2m_max[i])}° /
-              ${Math.round(daily.temperature_2m_min[i])}°
-            </strong>
-            <div>🌧️ ${daily.precipitation_probability_max[i] ?? "--"}%</div>
-          </div>
-        `;
-      }
-
-      document.getElementById("gw-forecast").innerHTML = forecastHTML;
-      showStatus("Weather successfully updated!");
-    } catch (error) {
-      showStatus("Unable to load weather. Please try again.");
-      console.error(error);
-    }
-  }
-
-  async function searchCity() {
-    const city = document.getElementById("gw-city").value.trim();
-
-    if (!city) {
-      showStatus("Please enter a city name.");
-      return;
-    }
-
-    showStatus("Searching for " + city + "...");
-
-    try {
-      const url =
-        "https://geocoding-api.open-meteo.com/v1/search?name=" +
-        encodeURIComponent(city) +
-        "&count=1&language=en&format=json";
-
-      const response = await fetch(url);
-      if (!response.ok) throw new Error("Search failed");
-
-      const data = await response.json();
-
-      if (!data.results || !data.results.length) {
-        showStatus("City not found. Please try another city.");
-        return;
-      }
-
-      const result = data.results[0];
-      const place = [result.name, result.admin1, result.country]
-        .filter(Boolean)
-        .join(", ");
-
-      getWeather(result.latitude, result.longitude, place);
-    } catch (error) {
-      showStatus("City search failed. Please try again.");
-      console.error(error);
-    }
-  }
-
-  function locateUser() {
-    if (!navigator.geolocation) {
-      showStatus("Location detection is not supported by your browser.");
-      return;
-    }
-
-    showStatus("Requesting your location permission...");
-
-    navigator.geolocation.getCurrentPosition(
-      position => {
-        const lat = position.coords.latitude;
-        const lon = position.coords.longitude;
-
-        getWeather(
-          lat,
-          lon,
-          "Your Current Location"
-        );
-      },
-      error => {
-        showStatus(
-          error.code === 1
-            ? "Location permission denied. Search for a city instead."
-            : "Unable to detect location. Please search for a city."
-        );
-      },
-      { enableHighAccuracy: false, timeout: 12000 }
-    );
-  }
-
-  window.gwSearch = searchCity;
-  window.gwLocate = locateUser;
-
-  document.getElementById("gw-city").addEventListener("keydown", event => {
-    if (event.key === "Enter") searchCity();
-  });
-
-  // Automatically request local weather when the page opens.
-  locateUser();
-
-})();
-</script>
-<!-- END NATZ1122LABS GLOBAL WEATHER -->
 
 <!-- FUTURE PROJECTS -->
+
 <section id="projects">
 
-  <h2 class="section-title">What's Coming Next</h2>
+  <h2 class="section-title">💡 What's Coming Next</h2>
 
   <p class="section-desc">
     We're continuously exploring new ideas
@@ -767,7 +934,7 @@ footer a {
       <div class="emoji">🤖</div>
       <h3>AI Solutions</h3>
       <p>
-        Exploring intelligent digital experiences
+        Intelligent digital experiences
         that help people work smarter.
       </p>
       <span class="coming-soon">Future Development</span>
@@ -794,26 +961,96 @@ footer a {
     </div>
 
   </div>
+
 </section>
 
-<!--<section class="global-news" id="global-news">
-  <h2>Global News</h2>
-  <p>Stay informed with the latest news from the Philippines and around the world.</p>
+<!-- FIVE BUSINESS INCOME STREAMS -->
 
-  <div class="news-container">
-    <div class="news-card">
-      <h3>🇵🇭 Philippines News</h3>
-      <p>Local headlines and important national updates.</p>
-      <a href="https://news.google.com/" target="_blank" rel="noopener noreferrer">Read Latest News</a>
+<section class="business-section" id="business">
+
+  <h2 class="section-title">
+    💼 The Natz1122Labs Digital Business
+  </h2>
+
+  <p class="section-desc">
+    Building a sustainable digital platform
+    through multiple business opportunities.
+  </p>
+
+  <p class="business-intro">
+    Our long-term vision is to make Natz1122Labs
+    a complete digital business, combining useful
+    services, educational resources and innovative products.
+  </p>
+
+  <div class="cards">
+
+    <div class="card">
+      <div class="emoji">📢</div>
+      <h3>1. Advertising Revenue</h3>
+      <p>
+        Potential income through approved advertising
+        networks when the website qualifies.
+      </p>
+      <span class="coming-soon">Future Implementation</span>
     </div>
 
-    <div class="news-card">
-      <h3>🌍 World News</h3>
-      <p>Discover international headlines and global developments.</p>
-      <a href="https://news.google.com/" target="_blank" rel="noopener noreferrer">Explore World News</a>
+    <div class="card">
+      <div class="emoji">🤝</div>
+      <h3>2. Affiliate Marketing</h3>
+      <p>
+        Earn eligible commissions by recommending
+        relevant products and services through approved
+        affiliate partnerships.
+      </p>
+      <span class="coming-soon">Future Implementation</span>
     </div>
+
+    <div class="card">
+      <div class="emoji">⭐</div>
+      <h3>3. Premium Digital Services</h3>
+      <p>
+        Offer optional paid features,
+        advanced digital tools and premium services.
+      </p>
+      <span class="coming-soon">Future Implementation</span>
+    </div>
+
+    <div class="card">
+      <div class="emoji">🛍️</div>
+      <h3>4. Digital Products</h3>
+      <p>
+        Develop and sell digital downloads,
+        educational materials, templates and useful resources.
+      </p>
+      <span class="coming-soon">Future Implementation</span>
+    </div>
+
+    <div class="card">
+      <div class="emoji">🌐</div>
+      <h3>5. Sponsorships & Partnerships</h3>
+      <p>
+        Build partnerships with suitable brands,
+        organizations and businesses through sponsored
+        opportunities.
+      </p>
+      <span class="coming-soon">Future Implementation</span>
+    </div>
+
   </div>
-</section> ABOUT -->
+
+  <div class="business-note">
+    <strong>Our business vision:</strong>
+    Five potential income streams working together.
+    Revenue is not automatic; each stream requires
+    suitable partners, implementation, approval where applicable,
+    and an audience.
+  </div>
+
+</section>
+
+<!-- ABOUT -->
+
 <section class="about" id="about">
 
   <h2 class="section-title">About Natz1122Labs</h2>
@@ -821,7 +1058,8 @@ footer a {
   <p>
     Natz1122Labs is an independent digital innovation project
     focused on creating practical and accessible technology.
-    Our goal is to develop useful online tools
+    Our goal is to develop useful online tools,
+    educational experiences and digital solutions
     that make everyday activities easier for people everywhere.
   </p>
 
@@ -832,6 +1070,7 @@ footer a {
 </section>
 
 <!-- CONTACT -->
+
 <section class="contact" id="contact">
 
   <h2 class="section-title">Let's Build the Future</h2>
@@ -853,13 +1092,265 @@ footer a {
 
 </main>
 
+<!-- FOOTER -->
+
 <footer>
+
   © 2026 Natz1122Labs. All Rights Reserved.
+
   <br>
+
   Building useful digital tools for everyone.
-  <br>
+
+  <br><br>
+
   <a href="#home">Back to Top ↑</a>
+
 </footer>
+
+<!-- GLOBAL WEATHER JAVASCRIPT -->
+
+<script>
+(function () {
+
+  const cityInput = document.getElementById("gw-city");
+  const status = document.getElementById("gw-status");
+
+  function weatherInfo(code) {
+
+    if (code === 0) return ["☀️", "Clear sky"];
+    if (code <= 2) return ["🌤️", "Partly cloudy"];
+    if (code === 3) return ["☁️", "Overcast"];
+    if (code <= 48) return ["🌫️", "Foggy"];
+    if (code <= 57) return ["🌦️", "Drizzle"];
+    if (code <= 67) return ["🌧️", "Rain"];
+    if (code <= 77) return ["❄️", "Snow"];
+    if (code <= 82) return ["🌧️", "Rain showers"];
+    if (code <= 86) return ["🌨️", "Snow showers"];
+    if (code <= 99) return ["⛈️", "Thunderstorms"];
+
+    return ["🌤️", "Unknown conditions"];
+  }
+
+  function showStatus(message) {
+    status.textContent = message;
+  }
+
+  async function getWeather(lat, lon, place) {
+
+    showStatus("Getting the latest weather...");
+
+    try {
+
+      const url =
+        "https://api.open-meteo.com/v1/forecast" +
+        "?latitude=" + encodeURIComponent(lat) +
+        "&longitude=" + encodeURIComponent(lon) +
+        "&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m" +
+        "&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max" +
+        "&timezone=auto&forecast_days=7";
+
+      const response = await fetch(url);
+
+      if (!response.ok) {
+        throw new Error("Weather service unavailable");
+      }
+
+      const data = await response.json();
+
+      const current = data.current;
+      const daily = data.daily;
+      const info = weatherInfo(current.weather_code);
+
+      document.getElementById("gw-place").textContent =
+        "📍 " + place;
+
+      document.getElementById("gw-icon").textContent =
+        info[0];
+
+      document.getElementById("gw-temp").textContent =
+        Math.round(current.temperature_2m) + "°C";
+
+      document.getElementById("gw-condition").textContent =
+        info[1];
+
+      document.getElementById("gw-feels").textContent =
+        Math.round(current.apparent_temperature) + "°C";
+
+      document.getElementById("gw-humidity").textContent =
+        current.relative_humidity_2m + "%";
+
+      document.getElementById("gw-wind").textContent =
+        current.wind_speed_10m + " km/h";
+
+      const forecast = document.getElementById("gw-forecast");
+
+      forecast.replaceChildren();
+
+      for (let i = 0; i < daily.time.length; i++) {
+
+        const day = new Date(daily.time[i] + "T12:00:00");
+
+        const dayName = day.toLocaleDateString("en-US", {
+          weekday: "short"
+        });
+
+        const dayInfo = weatherInfo(daily.weather_code[i]);
+
+        const dayCard = document.createElement("div");
+        dayCard.className = "gw-day";
+
+        const name = document.createElement("strong");
+        name.textContent = dayName;
+
+        const icon = document.createElement("div");
+        icon.className = "gw-day-icon";
+        icon.textContent = dayInfo[0];
+
+        const condition = document.createElement("div");
+        condition.textContent = dayInfo[1];
+
+        const temperature = document.createElement("strong");
+        temperature.textContent =
+          Math.round(daily.temperature_2m_max[i]) + "° / " +
+          Math.round(daily.temperature_2m_min[i]) + "°";
+
+        const rain = document.createElement("div");
+        rain.textContent =
+          "🌧️ " +
+          (daily.precipitation_probability_max[i] ?? "--") + "%";
+
+        dayCard.append(name, icon, condition, temperature, rain);
+        forecast.appendChild(dayCard);
+      }
+
+      showStatus("Weather successfully updated!");
+
+    } catch (error) {
+
+      showStatus("Unable to load weather. Please try again.");
+      console.error(error);
+
+    }
+
+  }
+
+  async function searchCity() {
+
+    const city = cityInput.value.trim();
+
+    if (!city) {
+      showStatus("Please enter a city name.");
+      return;
+    }
+
+    showStatus("Searching for " + city + "...");
+
+    try {
+
+      const url =
+        "https://geocoding-api.open-meteo.com/v1/search?name=" +
+        encodeURIComponent(city) +
+        "&count=1&language=en&format=json";
+
+      const response = await fetch(url);
+
+      if (!response.ok) {
+        throw new Error("City search failed");
+      }
+
+      const data = await response.json();
+
+      if (!data.results || !data.results.length) {
+        showStatus("City not found. Please try another city.");
+        return;
+      }
+
+      const result = data.results[0];
+
+      const place = [
+        result.name,
+        result.admin1,
+        result.country
+      ].filter(Boolean).join(", ");
+
+      await getWeather(
+        result.latitude,
+        result.longitude,
+        place
+      );
+
+    } catch (error) {
+
+      showStatus("City search failed. Please try again.");
+      console.error(error);
+
+    }
+
+  }
+
+  function locateUser() {
+
+    if (!navigator.geolocation) {
+      showStatus("Location detection is not supported. Search for a city instead.");
+      return;
+    }
+
+    showStatus("Requesting your location permission...");
+
+    navigator.geolocation.getCurrentPosition(
+
+      position => {
+
+        getWeather(
+          position.coords.latitude,
+          position.coords.longitude,
+          "Your Current Location"
+        );
+
+      },
+
+      error => {
+
+        showStatus(
+          error.code === 1
+            ? "Location permission denied. Search for a city instead."
+            : "Unable to detect location. Please search for a city."
+        );
+
+      },
+
+      {
+        enableHighAccuracy: false,
+        timeout: 12000
+      }
+
+    );
+
+  }
+
+  document.getElementById("gw-search-btn")
+    .addEventListener("click", searchCity);
+
+  document.getElementById("gw-location-btn")
+    .addEventListener("click", locateUser);
+
+  cityInput.addEventListener("keydown", event => {
+
+    if (event.key === "Enter") {
+      searchCity();
+    }
+
+  });
+
+  // Automatically try local weather.
+  // If location permission is unavailable,
+  // visitors can still search for any city.
+
+  locateUser();
+
+})();
+</script>
 
 </body>
 </html>
