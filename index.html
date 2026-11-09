@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,20 +6,57 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#080d1a">
 
+<title>Natz1122Labs | Free Digital Tools, Global Weather &amp; News</title>
+
 <meta name="description" content="Discover Natz1122Labs: free digital tools, global weather, world news, AI innovations and fun educational experiences for everyone.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Natz1122Labs | Free Digital Tools, Global Weather &amp; News">
-<meta property="og:description" content="Discover Natz1122Labs: free digital tools, global weather, world news, AI innovations and fun educational experiences for everyone.">
-<meta property="og:url" content="https://natz1122labs.github.io/">
-<meta name="keywords" content="Natz1122Labs, AI tools, digital innovation, global news, global weather, kids learning, online tools">
 
 <meta name="author" content="Natz1122Labs">
+<meta name="robots" content="index, follow">
 
-<meta property="og:title" content="Natz1122Labs | Digital Innovation for Everyone">
-<meta property="og:description" content="Explore useful digital tools, global weather, news and educational experiences.">
+<link rel="canonical" href="https://natz1122labs.github.io/">
+
+<!-- OPEN GRAPH SOCIAL SHARING -->
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Natz1122Labs">
+<meta property="og:title" content="Natz1122Labs | Free Digital Tools, Global Weather &amp; News">
+<meta property="og:description" content="Discover free digital tools, global weather, world news, AI innovations and educational experiences for everyone.">
+<meta property="og:url" content="https://natz1122labs.github.io/">
 
+<!-- TWITTER / X SOCIAL SHARING -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Natz1122Labs | Digital Innovation for Everyone">
+<meta name="twitter:description" content="Explore useful digital tools, global weather, news and educational experiences.">
+
+<!-- WEBSITE ICON AND PWA -->
+<link rel="icon" href="/favicon.ico">
 <link rel="manifest" href="/manifest.json">
+
+<!-- STRUCTURED DATA FOR SEARCH ENGINES -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://natz1122labs.github.io/#organization",
+      "name": "Natz1122Labs",
+      "url": "https://natz1122labs.github.io/",
+      "description": "An independent digital innovation project creating useful online tools, global information and educational experiences."
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://natz1122labs.github.io/#website",
+      "name": "Natz1122Labs",
+      "url": "https://natz1122labs.github.io/",
+      "description": "Free digital tools, global weather, world news and educational experiences.",
+      "publisher": {
+        "@id": "https://natz1122labs.github.io/#organization"
+      },
+      "inLanguage": "en"
+    }
+  ]
+}
+</script>
 
 <style>
 :root {
@@ -50,8 +88,30 @@ body {
   line-height: 1.6;
 }
 
-a {
+a, button {
   -webkit-tap-highlight-color: transparent;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid #ffd166;
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 10px;
+  z-index: 200;
+  background: white;
+  color: #080d1a;
+  padding: 12px;
+  border-radius: 6px;
+}
+
+.skip-link:focus {
+  left: 10px;
 }
 
 header {
@@ -445,6 +505,8 @@ section {
   margin: 12px 0 25px;
 }
 
+/* FOOTER */
+
 footer {
   text-align: center;
   padding: 30px 15px;
@@ -496,8 +558,11 @@ footer a {
     scroll-behavior: auto;
   }
 
-  * {
+  *,
+  *::before,
+  *::after {
     transition: none !important;
+    animation: none !important;
   }
 }
 </style>
@@ -505,13 +570,15 @@ footer a {
 
 <body>
 
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
 <header>
   <a class="logo" href="#home">Natz1122Labs</a>
 
   <nav aria-label="Main navigation">
     <a href="#home">Home</a>
     <a href="global-news.html">Global News</a>
-<a href="global-weather.html">Global Weather</a>
+    <a href="global-weather.html">Global Weather</a>
     <a href="#ai-tools">AI Tools</a>
     <a href="#academy">Kid Academy</a>
     <a href="#business">Business</a>
@@ -520,7 +587,7 @@ footer a {
   </nav>
 </header>
 
-<main>
+<main id="main-content">
 
 <!-- HERO -->
 
@@ -620,7 +687,7 @@ footer a {
     </div>
 
     <div class="news-card">
-      <h3>📈 Business & Finance</h3>
+      <h3>📈 Business &amp; Finance</h3>
       <p>
         Follow business developments, markets,
         economic news and financial trends.
@@ -635,7 +702,7 @@ footer a {
     </div>
 
     <div class="news-card">
-      <h3>🔬 Science & Discovery</h3>
+      <h3>🔬 Science &amp; Discovery</h3>
       <p>
         Explore scientific discoveries, space,
         research and new innovations.
@@ -685,6 +752,7 @@ footer a {
       id="gw-city"
       placeholder="Search city (e.g. Manila)"
       aria-label="Search city"
+      autocomplete="off"
     >
 
     <button type="button" id="gw-search-btn">
@@ -700,7 +768,7 @@ footer a {
     📍 Use My Location
   </button>
 
-  <div class="gw-status" id="gw-status" role="status">
+  <div class="gw-status" id="gw-status" role="status" aria-live="polite">
     Loading weather...
   </div>
 
@@ -708,7 +776,7 @@ footer a {
 
     <h3 id="gw-place">Your Weather</h3>
 
-    <div class="gw-icon" id="gw-icon">🌤️</div>
+    <div class="gw-icon" id="gw-icon" aria-hidden="true">🌤️</div>
 
     <div class="gw-temp" id="gw-temp">--°C</div>
 
@@ -760,7 +828,7 @@ footer a {
 
 <section class="tools-section" id="ai-tools">
 
-  <h2 class="section-title">🤖 Our AI & Digital Tools</h2>
+  <h2 class="section-title">🤖 Our AI &amp; Digital Tools</h2>
 
   <p class="section-desc">
     Explore our growing collection of practical digital tools.
@@ -846,7 +914,7 @@ footer a {
   </h2>
 
   <p class="section-desc">
-    Learn, Play & Grow Together!
+    Learn, Play &amp; Grow Together!
     Fun educational experiences designed to make learning exciting.
   </p>
 
@@ -891,7 +959,7 @@ footer a {
     <div class="card">
       <div class="emoji">📚</div>
 
-      <h3>Reading & Language</h3>
+      <h3>Reading &amp; Language</h3>
 
       <p>
         Build reading skills, discover words
@@ -1029,7 +1097,7 @@ footer a {
 
     <div class="card">
       <div class="emoji">🌐</div>
-      <h3>5. Sponsorships & Partnerships</h3>
+      <h3>5. Sponsorships &amp; Partnerships</h3>
       <p>
         Build partnerships with suitable brands,
         organizations and businesses through sponsored
@@ -1120,15 +1188,37 @@ footer a {
   function weatherInfo(code) {
 
     if (code === 0) return ["☀️", "Clear sky"];
-    if (code <= 2) return ["🌤️", "Partly cloudy"];
+    if (code === 1) return ["🌤️", "Mainly clear"];
+    if (code === 2) return ["⛅", "Partly cloudy"];
     if (code === 3) return ["☁️", "Overcast"];
-    if (code <= 48) return ["🌫️", "Foggy"];
-    if (code <= 57) return ["🌦️", "Drizzle"];
-    if (code <= 67) return ["🌧️", "Rain"];
-    if (code <= 77) return ["❄️", "Snow"];
-    if (code <= 82) return ["🌧️", "Rain showers"];
-    if (code <= 86) return ["🌨️", "Snow showers"];
-    if (code <= 99) return ["⛈️", "Thunderstorms"];
+
+    if (code === 45 || code === 48) {
+      return ["🌫️", "Foggy"];
+    }
+
+    if ([51, 53, 55, 56, 57].includes(code)) {
+      return ["🌦️", "Drizzle"];
+    }
+
+    if ([61, 63, 65, 66, 67].includes(code)) {
+      return ["🌧️", "Rain"];
+    }
+
+    if ([71, 73, 75, 77].includes(code)) {
+      return ["❄️", "Snow"];
+    }
+
+    if ([80, 81, 82].includes(code)) {
+      return ["🌧️", "Rain showers"];
+    }
+
+    if ([85, 86].includes(code)) {
+      return ["🌨️", "Snow showers"];
+    }
+
+    if ([95, 96, 99].includes(code)) {
+      return ["⛈️", "Thunderstorms"];
+    }
 
     return ["🌤️", "Unknown conditions"];
   }
@@ -1158,6 +1248,10 @@ footer a {
       }
 
       const data = await response.json();
+
+      if (!data.current || !data.daily) {
+        throw new Error("Weather data is incomplete");
+      }
 
       const current = data.current;
       const daily = data.daily;
@@ -1345,8 +1439,8 @@ footer a {
   });
 
   // Automatically try local weather.
-  // If location permission is unavailable,
-  // visitors can still search for any city.
+  // Visitors can still search for any city
+  // if location permission is unavailable.
 
   locateUser();
 
