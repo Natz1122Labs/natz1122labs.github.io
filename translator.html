@@ -5,8 +5,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#080d1a">
-<meta name="description" content="Free global translator by Natz1122Labs.">
-<title>Global Translator V3.1 | Natz1122Labs</title>
+<meta name="description" content="Free global translator by Natz1122Labs. Translate between more than 100 languages.">
+<title>Global Translator V3.2 | Natz1122Labs</title>
 
 <style>
 *{box-sizing:border-box}
@@ -131,7 +131,7 @@ footer{text-align:center;color:#64748b;font-size:12px;margin:25px 0}
   Translation service: MyMemory.
   Free anonymous usage is limited to 5,000 characters per day.
   Language availability depends on the provider.
-  Common English-to-Tagalog phrases have additional verified corrections.
+  Common English-to-Tagalog phrases have additional reviewed corrections.
   Your text is sent to an external translation service.
   Do not submit passwords or confidential information.
  </p>
@@ -194,34 +194,129 @@ const counter=document.getElementById("counter");
 
 const PLACEHOLDER="Your translation will appear here.";
 
-/* Verified common phrase corrections */
+/* Expanded common English-to-Tagalog translations */
 const verifiedTranslations={
  "en|tl":{
-  "i love you":"Mahal kita.",
-  "i miss you":"Miss na kita.",
-  "i need you":"Ikaw ang kailangan ko.",
+  /* Greetings */
+  "hello":"Kamusta!",
+  "hi":"Kumusta!",
   "good morning":"Magandang umaga.",
   "good afternoon":"Magandang hapon.",
   "good evening":"Magandang gabi.",
   "good night":"Magandang gabi.",
+  "how are you":"Kumusta ka?",
+  "how are you?":"Kumusta ka?",
+  "i am fine":"Mabuti ako.",
+  "i am okay":"Okay lang ako.",
+  "nice to meet you":"Ikinagagalak kitang makilala.",
+  "welcome":"Maligayang pagdating.",
+  "see you later":"Magkita tayo mamaya.",
+  "see you tomorrow":"Magkita tayo bukas.",
+  "goodbye":"Paalam.",
+
+  /* Love and relationships */
+  "i love you":"Mahal kita.",
+  "i miss you":"Miss na kita.",
+  "i need you":"Ikaw ang kailangan ko.",
+  "i love you so much":"Mahal na mahal kita.",
+  "you are beautiful":"Maganda ka.",
+  "you are handsome":"Gwapo ka.",
+  "i am thinking of you":"Iniisip kita.",
+  "you are special":"Espesyal ka.",
+  "i will always love you":"Mamahalin kita magpakailanman.",
+  "i want to see you":"Gusto kitang makita.",
+
+  /* Family */
+  "i love my family":"Mahal ko ang aking pamilya.",
+  "i miss my family":"Miss ko na ang aking pamilya.",
+  "where is my mother":"Nasaan ang aking ina?",
+  "where is my father":"Nasaan ang aking ama?",
+  "my family is important to me":"Mahalaga sa akin ang aking pamilya.",
+
+  /* Everyday conversation */
   "thank you":"Salamat.",
   "thank you very much":"Maraming salamat.",
-  "how are you?":"Kumusta ka?",
-  "how are you":"Kumusta ka?",
-  "i am fine":"Mabuti ako.",
-  "i am happy":"Masaya ako.",
-  "i am hungry":"Gutom ako.",
-  "i am tired":"Pagod ako.",
-  "see you later":"Magkita tayo mamaya.",
-  "welcome":"Maligayang pagdating.",
-  "i love my family":"Mahal ko ang aking pamilya.",
+  "you are welcome":"Walang anuman.",
+  "please":"Pakiusap.",
   "i am sorry":"Pasensya na.",
-  "please help me":"Tulungan mo ako, pakiusap."
+  "sorry":"Paumanhin.",
+  "excuse me":"Makikiraan po.",
+  "please help me":"Tulungan mo ako, pakiusap.",
+  "can you help me":"Maaari mo ba akong tulungan?",
+  "i understand":"Naiintindihan ko.",
+  "i don't understand":"Hindi ko maintindihan.",
+  "i don't know":"Hindi ko alam.",
+  "i know":"Alam ko.",
+  "yes":"Oo.",
+  "no":"Hindi.",
+  "maybe":"Siguro.",
+  "of course":"Siyempre.",
+  "really?":"Talaga?",
+  "what happened?":"Anong nangyari?",
+  "what is your name?":"Ano ang pangalan mo?",
+  "my name is":"Ang pangalan ko ay",
+  "where are you from?":"Taga-saan ka?",
+  "i am from the philippines":"Taga-Pilipinas ako.",
+
+  /* Feelings and emotions */
+  "i am happy":"Masaya ako.",
+  "i am sad":"Malungkot ako.",
+  "i am tired":"Pagod ako.",
+  "i am hungry":"Gutom ako.",
+  "i am thirsty":"Uhaw ako.",
+  "i am worried":"Nag-aalala ako.",
+  "i am excited":"Nasasabik ako.",
+  "i am afraid":"Natatakot ako.",
+  "don't worry":"Huwag kang mag-alala.",
+  "be happy":"Maging masaya ka.",
+
+  /* Daily activities */
+  "what are you doing?":"Ano ang ginagawa mo?",
+  "i am working":"Nagtatrabaho ako.",
+  "i am studying":"Nag-aaral ako.",
+  "i am eating":"Kumakain ako.",
+  "i am going home":"Uuwi na ako.",
+  "i am going to sleep":"Matutulog na ako.",
+  "wait for me":"Hintayin mo ako.",
+  "come here":"Halika rito.",
+  "let's go":"Tara na.",
+  "take care":"Mag-ingat ka.",
+  "be careful":"Mag-ingat ka.",
+  "have a nice day":"Magandang araw sa iyo.",
+
+  /* Food and travel */
+  "where is the bathroom?":"Nasaan ang banyo?",
+  "where is the restaurant?":"Nasaan ang restawran?",
+  "how much is this?":"Magkano ito?",
+  "this is delicious":"Masarap ito.",
+  "i need water":"Kailangan ko ng tubig.",
+  "where is the hospital?":"Nasaan ang ospital?",
+  "i need a doctor":"Kailangan ko ng doktor.",
+  "call the police":"Tawagan ang pulis.",
+  "i am lost":"Nawawala ako.",
+  "where is the airport?":"Nasaan ang paliparan?",
+
+  /* Useful expressions */
+  "congratulations":"Binabati kita.",
+  "happy birthday":"Maligayang kaarawan.",
+  "good luck":"Good luck. / Sana ay suwertehin ka.",
+  "god bless you":"Pagpalain ka ng Diyos.",
+  "i believe in you":"Naniniwala ako sa iyo.",
+  "never give up":"Huwag kang susuko.",
+  "everything will be okay":"Magiging maayos din ang lahat.",
+  "time is precious":"Mahalaga ang oras.",
+  "life is beautiful":"Maganda ang buhay.",
+  "thank you for everything":"Salamat sa lahat.",
+  "i appreciate you":"Pinahahalagahan kita.",
+  "i am proud of you":"Ipinagmamalaki kita.",
+  "have a safe trip":"Mag-ingat ka sa iyong paglalakbay.",
+  "until we meet again":"Hanggang sa muli nating pagkikita."
  }
 };
 
 function fillLanguages(select,selected){
  const fragment=document.createDocumentFragment();
+
  languages.forEach(([name,code])=>{
   const option=document.createElement("option");
   option.value=code;
@@ -229,6 +324,7 @@ function fillLanguages(select,selected){
   option.selected=code===selected;
   fragment.appendChild(option);
  });
+
  select.appendChild(fragment);
 }
 
@@ -264,10 +360,12 @@ function cleanTranslation(raw){
 function swapLanguages(){
  const oldSource=source.value;
  const oldTarget=target.value;
+
  source.value=oldTarget;
  target.value=oldSource;
 
  const translated=output.textContent;
+
  if(translated&&translated!==PLACEHOLDER){
   input.value=translated;
   updateCounter();
@@ -287,6 +385,7 @@ async function translateText(){
  }
 
  const byteLength=new TextEncoder().encode(text).length;
+
  if(byteLength>500){
   setStatus("Text exceeds the 500-byte service limit. Please shorten it.");
   return;
@@ -305,7 +404,7 @@ async function translateText(){
 
  if(correction){
   output.textContent=correction;
-  setStatus("Translation complete! Verified common phrase.");
+  setStatus("Translation complete! Reviewed common phrase.");
   return;
  }
 
@@ -356,6 +455,7 @@ async function translateText(){
   }
 
   output.textContent=result;
+
   setStatus(
    "Translation complete! Please review important translations for accuracy."
   );
