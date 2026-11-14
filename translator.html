@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#080d1a">
 <meta name="description" content="Free global translator by Natz1122Labs. Translate between more than 100 languages.">
-<title>Global Translator V3.2 | Natz1122Labs</title>
+<title>Global Translator V3.3 | Natz1122Labs</title>
 
 <style>
 *{box-sizing:border-box}
@@ -194,18 +194,18 @@ const counter=document.getElementById("counter");
 
 const PLACEHOLDER="Your translation will appear here.";
 
-/* Expanded common English-to-Tagalog translations */
+/* Expanded verified English-to-Tagalog translations */
 const verifiedTranslations={
  "en|tl":{
   /* Greetings */
-  "hello":"Kamusta!",
+  "hello":"Kumusta!",
   "hi":"Kumusta!",
   "good morning":"Magandang umaga.",
   "good afternoon":"Magandang hapon.",
   "good evening":"Magandang gabi.",
   "good night":"Magandang gabi.",
   "how are you":"Kumusta ka?",
-  "how are you?":"Kumusta ka?",
+  "hello, how are you":"Kumusta ka?",
   "i am fine":"Mabuti ako.",
   "i am okay":"Okay lang ako.",
   "nice to meet you":"Ikinagagalak kitang makilala.",
@@ -251,11 +251,11 @@ const verifiedTranslations={
   "no":"Hindi.",
   "maybe":"Siguro.",
   "of course":"Siyempre.",
-  "really?":"Talaga?",
-  "what happened?":"Anong nangyari?",
-  "what is your name?":"Ano ang pangalan mo?",
+  "really":"Talaga?",
+  "what happened":"Anong nangyari?",
+  "what is your name":"Ano ang pangalan mo?",
   "my name is":"Ang pangalan ko ay",
-  "where are you from?":"Taga-saan ka?",
+  "where are you from":"Taga-saan ka?",
   "i am from the philippines":"Taga-Pilipinas ako.",
 
   /* Feelings and emotions */
@@ -271,7 +271,7 @@ const verifiedTranslations={
   "be happy":"Maging masaya ka.",
 
   /* Daily activities */
-  "what are you doing?":"Ano ang ginagawa mo?",
+  "what are you doing":"Ano ang ginagawa mo?",
   "i am working":"Nagtatrabaho ako.",
   "i am studying":"Nag-aaral ako.",
   "i am eating":"Kumakain ako.",
@@ -285,27 +285,28 @@ const verifiedTranslations={
   "have a nice day":"Magandang araw sa iyo.",
 
   /* Food and travel */
-  "where is the bathroom?":"Nasaan ang banyo?",
-  "where is the restaurant?":"Nasaan ang restawran?",
-  "how much is this?":"Magkano ito?",
+  "where is the bathroom":"Nasaan ang banyo?",
+  "where is the restaurant":"Nasaan ang restawran?",
+  "how much is this":"Magkano ito?",
   "this is delicious":"Masarap ito.",
   "i need water":"Kailangan ko ng tubig.",
-  "where is the hospital?":"Nasaan ang ospital?",
+  "where is the hospital":"Nasaan ang ospital?",
   "i need a doctor":"Kailangan ko ng doktor.",
   "call the police":"Tawagan ang pulis.",
   "i am lost":"Nawawala ako.",
-  "where is the airport?":"Nasaan ang paliparan?",
+  "where is the airport":"Nasaan ang paliparan?",
 
   /* Useful expressions */
   "congratulations":"Binabati kita.",
   "happy birthday":"Maligayang kaarawan.",
-  "good luck":"Good luck. / Sana ay suwertehin ka.",
+  "good luck":"Sana ay suwertehin ka.",
   "god bless you":"Pagpalain ka ng Diyos.",
   "i believe in you":"Naniniwala ako sa iyo.",
   "never give up":"Huwag kang susuko.",
   "everything will be okay":"Magiging maayos din ang lahat.",
   "time is precious":"Mahalaga ang oras.",
   "life is beautiful":"Maganda ang buhay.",
+  "the whole world is beautiful":"Maganda ang buong mundo.",
   "thank you for everything":"Salamat sa lahat.",
   "i appreciate you":"Pinahahalagahan kita.",
   "i am proud of you":"Ipinagmamalaki kita.",
@@ -340,6 +341,34 @@ function updateCounter(){
 }
 
 input.addEventListener("input",updateCounter);
+
+/* Normalize phrases to ignore punctuation, capitalization and extra spaces */
+function normalizePhrase(value){
+ return String(value)
+  .toLowerCase()
+  .normalize("NFD")
+  .replace(/[\u0300-\u036f]/g,"")
+  .replace(/[^\p{L}\p{N}\s']/gu," ")
+  .replace(/\s+/g," ")
+  .trim();
+}
+
+/* Find verified translation even when punctuation differs */
+function getVerifiedTranslation(pair,text){
+ const dictionary=verifiedTranslations[pair];
+
+ if(!dictionary)return null;
+
+ const normalizedInput=normalizePhrase(text);
+
+ for(const [phrase,translation] of Object.entries(dictionary)){
+  if(normalizePhrase(phrase)===normalizedInput){
+   return translation;
+  }
+ }
+
+ return null;
+}
 
 function cleanTranslation(raw){
  const decoder=document.createElement("textarea");
@@ -399,12 +428,11 @@ async function translateText(){
 
  /* Check verified translations before using the API */
  const pair=source.value+"|"+target.value;
- const phrase=text.toLowerCase().trim();
- const correction=verifiedTranslations[pair]?.[phrase];
+ const correction=getVerifiedTranslation(pair,text);
 
  if(correction){
   output.textContent=correction;
-  setStatus("Translation complete! Reviewed common phrase.");
+  setStatus("Translation complete! Verified common phrase.");
   return;
  }
 
