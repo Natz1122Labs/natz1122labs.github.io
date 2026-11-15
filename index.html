@@ -8,30 +8,31 @@
 
 <title>Natz1122Labs | Free Digital Tools, Global Weather &amp; News</title>
 
-<meta name="description" content="Discover Natz1122Labs: free digital tools, global weather, world news, AI innovations and fun educational experiences for everyone.">
-
+<meta name="description" content="Discover Natz1122Labs: free digital tools, global weather, world news, AI innovations, documentaries and educational experiences for everyone.">
 <meta name="author" content="Natz1122Labs">
 <meta name="robots" content="index, follow">
 
 <link rel="canonical" href="https://natz1122labs.github.io/">
 
-<!-- OPEN GRAPH SOCIAL SHARING -->
+<!-- OPEN GRAPH -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Natz1122Labs">
-<meta property="og:title" content="Natz1122Labs | Free Digital Tools, Global Weather &amp; News">
-<meta property="og:description" content="Discover free digital tools, global weather, world news, AI innovations and educational experiences for everyone.">
+<meta property="og:title" content="Natz1122Labs | Digital Innovation for Everyone">
+<meta property="og:description" content="Explore free digital tools, global weather, world news, documentaries and educational experiences.">
 <meta property="og:url" content="https://natz1122labs.github.io/">
+<meta property="og:image" content="https://img.youtube.com/vi/au-Ae67dYC0/hqdefault.jpg">
 
-<!-- TWITTER / X SOCIAL SHARING -->
-<meta name="twitter:card" content="summary">
+<!-- TWITTER / X -->
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Natz1122Labs | Digital Innovation for Everyone">
-<meta name="twitter:description" content="Explore useful digital tools, global weather, news and educational experiences.">
+<meta name="twitter:description" content="Explore digital tools, global weather, news and documentaries.">
+<meta name="twitter:image" content="https://img.youtube.com/vi/au-Ae67dYC0/hqdefault.jpg">
 
 <!-- WEBSITE ICON AND PWA -->
 <link rel="icon" href="/favicon.ico">
 <link rel="manifest" href="/manifest.json">
 
-<!-- STRUCTURED DATA FOR SEARCH ENGINES -->
+<!-- STRUCTURED DATA -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -41,14 +42,13 @@
       "@id": "https://natz1122labs.github.io/#organization",
       "name": "Natz1122Labs",
       "url": "https://natz1122labs.github.io/",
-      "description": "An independent digital innovation project creating useful online tools, global information and educational experiences."
+      "description": "An independent digital innovation project creating useful online tools, global information, documentaries and educational experiences."
     },
     {
       "@type": "WebSite",
       "@id": "https://natz1122labs.github.io/#website",
       "name": "Natz1122Labs",
       "url": "https://natz1122labs.github.io/",
-      "description": "Free digital tools, global weather, world news and educational experiences.",
       "publisher": {
         "@id": "https://natz1122labs.github.io/#organization"
       },
@@ -282,6 +282,76 @@ section {
   border: 1px solid #475569;
   padding: 5px 10px;
   border-radius: 20px;
+}
+
+/* FEATURED DOCUMENTARY */
+
+.documentary-section {
+  background: linear-gradient(145deg, #102b50, #080d1a);
+}
+
+.documentary-container {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.documentary-intro {
+  text-align: center;
+  color: var(--muted);
+  max-width: 750px;
+  margin: 0 auto 30px;
+}
+
+.documentary-player {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 15px 45px rgba(0,0,0,0.4);
+}
+
+.documentary-player iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.documentary-details {
+  text-align: center;
+  padding: 25px 15px 0;
+}
+
+.documentary-details h3 {
+  color: var(--blue);
+  font-size: clamp(21px, 4vw, 28px);
+  margin-bottom: 12px;
+}
+
+.documentary-details p {
+  color: var(--muted);
+  max-width: 750px;
+  margin: 0 auto 22px;
+}
+
+.documentary-button {
+  display: inline-block;
+  background: #dc2626;
+  color: white;
+  padding: 13px 25px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.documentary-button:hover {
+  background: #b91c1c;
+  transform: translateY(-2px);
 }
 
 /* GLOBAL NEWS */
@@ -551,6 +621,10 @@ footer a {
   .gw-details {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .documentary-player {
+    border-radius: 10px;
+  }
 }
 
 @media(prefers-reduced-motion: reduce) {
@@ -577,8 +651,9 @@ footer a {
 
   <nav aria-label="Main navigation">
     <a href="#home">Home</a>
-    <a href="global-news.html">Global News</a>
-    <a href="global-weather.html">Global Weather</a>
+    <a href="#documentary">Documentary</a>
+    <a href="#global-news">Global News</a>
+    <a href="#global-weather">Global Weather</a>
     <a href="#ai-tools">AI Tools</a>
     <a href="#academy">Kid Academy</a>
     <a href="#business">Business</a>
@@ -606,6 +681,63 @@ footer a {
   </p>
 
   <a href="#ai-tools" class="btn">Explore Our Digital Tools</a>
+
+</section>
+
+<!-- FEATURED DOCUMENTARY -->
+
+<section class="documentary-section" id="documentary">
+
+  <div class="documentary-container">
+
+    <h2 class="section-title">
+      🎬 Featured Documentary
+    </h2>
+
+    <p class="documentary-intro">
+      Explore fascinating questions about our universe,
+      humanity and the mysteries beyond our world.
+      Discover our featured documentary from Natz1122Labs.
+    </p>
+
+    <div class="documentary-player">
+
+      <iframe
+        src="https://www.youtube-nocookie.com/embed/au-Ae67dYC0"
+        title="Unseen Visitors: Are We Alone? - Natz1122Labs Documentary"
+        loading="lazy"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
+
+    </div>
+
+    <div class="documentary-details">
+
+      <h3>
+        Unseen Visitors: Are We Alone?
+      </h3>
+
+      <p>
+        Are we alone in the universe?
+        Explore the mysteries of unidentified flying objects,
+        unexplained sightings and the possibility of life beyond Earth.
+        Watch our documentary and discover the questions
+        that continue to fascinate humanity.
+      </p>
+
+      <a
+        href="https://youtu.be/au-Ae67dYC0"
+        class="documentary-button"
+        target="_blank"
+        rel="noopener noreferrer">
+        ▶ Watch on YouTube
+      </a>
+
+    </div>
+
+  </div>
 
 </section>
 
