@@ -13,8 +13,9 @@
 <meta name="robots" content="index, follow">
 
 <link rel="canonical" href="https://natz1122labs.github.io/">
+<link rel="icon" href="/favicon.ico">
+<link rel="manifest" href="/manifest.json">
 
-<!-- OPEN GRAPH -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Natz1122Labs">
 <meta property="og:title" content="Natz1122Labs | Digital Innovation for Everyone">
@@ -22,17 +23,11 @@
 <meta property="og:url" content="https://natz1122labs.github.io/">
 <meta property="og:image" content="https://img.youtube.com/vi/au-Ae67dYC0/hqdefault.jpg">
 
-<!-- TWITTER / X -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Natz1122Labs | Digital Innovation for Everyone">
 <meta name="twitter:description" content="Explore digital tools, global weather, news and documentaries.">
 <meta name="twitter:image" content="https://img.youtube.com/vi/au-Ae67dYC0/hqdefault.jpg">
 
-<!-- WEBSITE ICON AND PWA -->
-<link rel="icon" href="/favicon.ico">
-<link rel="manifest" href="/manifest.json">
-
-<!-- STRUCTURED DATA -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -60,583 +55,522 @@
 
 <style>
 :root {
-  --bg: #080d1a;
-  --panel: #111c30;
-  --panel2: #0d1729;
-  --blue: #38bdf8;
-  --blue-dark: #0284c7;
-  --text: #f1f5f9;
-  --muted: #aab8cc;
-  --border: #263850;
+  --bg:#080d1a;
+  --panel:#111c30;
+  --panel2:#0d1729;
+  --blue:#38bdf8;
+  --blue-dark:#0284c7;
+  --text:#f1f5f9;
+  --muted:#aab8cc;
+  --border:#263850;
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
 html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 25px;
+  scroll-behavior:smooth;
+  scroll-padding-top:25px;
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
+  font-family:Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
 }
 
-a, button {
-  -webkit-tap-highlight-color: transparent;
+a,button {
+  -webkit-tap-highlight-color:transparent;
 }
 
 a:focus-visible,
 button:focus-visible,
 input:focus-visible {
-  outline: 3px solid #ffd166;
-  outline-offset: 3px;
+  outline:3px solid #ffd166;
+  outline-offset:3px;
 }
 
 .skip-link {
-  position: absolute;
-  left: -9999px;
-  top: 10px;
-  z-index: 200;
-  background: white;
-  color: #080d1a;
-  padding: 12px;
-  border-radius: 6px;
+  position:absolute;
+  left:-9999px;
+  top:10px;
+  z-index:200;
+  background:white;
+  color:#080d1a;
+  padding:12px;
+  border-radius:6px;
 }
 
 .skip-link:focus {
-  left: 10px;
+  left:10px;
 }
 
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  padding: 18px 7%;
-  border-bottom: 1px solid #1e293b;
-  background: rgba(8,13,26,0.97);
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  padding:18px 7%;
+  border-bottom:1px solid #1e293b;
+  background:rgba(8,13,26,.97);
+  position:sticky;
+  top:0;
+  z-index:100;
 }
 
 .logo {
-  font-size: 23px;
-  font-weight: bold;
-  color: var(--blue);
-  text-decoration: none;
-  white-space: nowrap;
+  font-size:23px;
+  font-weight:bold;
+  color:var(--blue);
+  text-decoration:none;
+  white-space:nowrap;
 }
 
 nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 17px;
-  align-items: center;
+  display:flex;
+  flex-wrap:wrap;
+  gap:17px;
+  align-items:center;
 }
 
 nav a {
-  color: #cbd5e1;
-  text-decoration: none;
-  font-size: 13px;
-  transition: 0.2s;
+  color:#cbd5e1;
+  text-decoration:none;
+  font-size:13px;
+  transition:.2s;
 }
 
 nav a:hover {
-  color: var(--blue);
+  color:var(--blue);
 }
 
 .hero {
-  text-align: center;
-  padding: 105px 20px 95px;
+  text-align:center;
+  padding:105px 20px 95px;
   background:
-    radial-gradient(ellipse at top, #12345b, transparent 70%),
+    radial-gradient(ellipse at top,#12345b,transparent 70%),
     var(--bg);
 }
 
 .tag {
-  color: var(--blue);
-  letter-spacing: 3px;
-  font-size: 12px;
-  font-weight: bold;
+  color:var(--blue);
+  letter-spacing:3px;
+  font-size:12px;
+  font-weight:bold;
 }
 
 .hero h1 {
-  font-size: clamp(38px, 8vw, 66px);
-  margin: 20px 0;
-  line-height: 1.15;
+  font-size:clamp(38px,8vw,66px);
+  margin:20px 0;
+  line-height:1.15;
 }
 
 .hero h1 span {
-  color: var(--blue);
+  color:var(--blue);
 }
 
 .hero p {
-  max-width: 680px;
-  margin: 0 auto 32px;
-  color: var(--muted);
-  font-size: 17px;
+  max-width:680px;
+  margin:0 auto 32px;
+  color:var(--muted);
+  font-size:17px;
 }
 
 .btn {
-  display: inline-block;
-  padding: 13px 25px;
-  background: var(--blue-dark);
-  color: white;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: bold;
-  transition: 0.2s;
+  display:inline-block;
+  padding:13px 25px;
+  background:var(--blue-dark);
+  color:white;
+  text-decoration:none;
+  border-radius:8px;
+  font-weight:bold;
+  transition:.2s;
 }
 
 .btn:hover {
-  background: #0ea5e9;
-  transform: translateY(-2px);
+  background:#0ea5e9;
+  transform:translateY(-2px);
 }
 
 section {
-  padding: 75px 7%;
-  scroll-margin-top: 85px;
+  padding:75px 7%;
+  scroll-margin-top:85px;
 }
 
 .section-title {
-  text-align: center;
-  font-size: clamp(26px, 5vw, 34px);
-  margin-bottom: 12px;
+  text-align:center;
+  font-size:clamp(26px,5vw,34px);
+  margin-bottom:12px;
 }
 
 .section-desc {
-  text-align: center;
-  color: #94a3b8;
-  margin: 0 auto 38px;
-  max-width: 680px;
+  text-align:center;
+  color:#94a3b8;
+  margin:0 auto 38px;
+  max-width:680px;
 }
 
 .tools-section {
-  background: #0a1222;
+  background:#0a1222;
 }
 
 .cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 22px;
-  max-width: 1150px;
-  margin: auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:22px;
+  max-width:1150px;
+  margin:auto;
 }
 
 .card {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  padding: 27px;
-  border-radius: 15px;
-  transition: 0.25s;
+  background:var(--panel);
+  border:1px solid var(--border);
+  padding:27px;
+  border-radius:15px;
+  transition:.25s;
 }
 
 .card:hover {
-  border-color: var(--blue);
-  transform: translateY(-4px);
+  border-color:var(--blue);
+  transform:translateY(-4px);
 }
 
 .emoji {
-  font-size: 38px;
+  font-size:38px;
 }
 
 .card h3 {
-  margin: 13px 0 8px;
-  color: var(--blue);
-  font-size: 20px;
+  margin:13px 0 8px;
+  color:var(--blue);
+  font-size:20px;
 }
 
 .card p {
-  color: var(--muted);
-  font-size: 14px;
-  margin-bottom: 20px;
+  color:var(--muted);
+  font-size:14px;
+  margin-bottom:20px;
 }
 
 .card-link {
-  display: inline-block;
-  padding: 10px 17px;
-  background: #075985;
-  color: white;
-  text-decoration: none;
-  border-radius: 7px;
-  font-weight: bold;
-  font-size: 14px;
+  display:inline-block;
+  padding:10px 17px;
+  background:#075985;
+  color:white;
+  text-decoration:none;
+  border-radius:7px;
+  font-weight:bold;
+  font-size:14px;
 }
 
 .card-link:hover {
-  background: #0284c7;
+  background:#0284c7;
 }
 
 .coming-soon {
-  display: inline-block;
-  color: #94a3b8;
-  font-size: 12px;
-  border: 1px solid #475569;
-  padding: 5px 10px;
-  border-radius: 20px;
+  display:inline-block;
+  color:#94a3b8;
+  font-size:12px;
+  border:1px solid #475569;
+  padding:5px 10px;
+  border-radius:20px;
 }
 
-/* FEATURED DOCUMENTARY */
+/* DOCUMENTARY */
 
 .documentary-section {
-  background: linear-gradient(145deg, #102b50, #080d1a);
+  background:linear-gradient(145deg,#102b50,#080d1a);
 }
 
 .documentary-container {
-  max-width: 1000px;
-  margin: auto;
+  max-width:1000px;
+  margin:auto;
 }
 
 .documentary-intro {
-  text-align: center;
-  color: var(--muted);
-  max-width: 750px;
-  margin: 0 auto 30px;
+  text-align:center;
+  color:var(--muted);
+  max-width:750px;
+  margin:0 auto 30px;
 }
 
 .documentary-player {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  background: #000;
-  border: 1px solid var(--border);
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 15px 45px rgba(0,0,0,0.4);
+  position:relative;
+  width:100%;
+  aspect-ratio:16/9;
+  background:#000;
+  border:1px solid var(--border);
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:0 15px 45px rgba(0,0,0,.4);
 }
 
 .documentary-player iframe {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  border:0;
 }
 
 .documentary-details {
-  text-align: center;
-  padding: 25px 15px 0;
+  text-align:center;
+  padding:25px 15px 0;
 }
 
 .documentary-details h3 {
-  color: var(--blue);
-  font-size: clamp(21px, 4vw, 28px);
-  margin-bottom: 12px;
+  color:var(--blue);
+  font-size:clamp(21px,4vw,28px);
+  margin-bottom:12px;
 }
 
 .documentary-details p {
-  color: var(--muted);
-  max-width: 750px;
-  margin: 0 auto 22px;
+  color:var(--muted);
+  max-width:750px;
+  margin:0 auto 22px;
 }
 
 .documentary-button {
-  display: inline-block;
-  background: #dc2626;
-  color: white;
-  padding: 13px 25px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: 0.2s;
+  display:inline-block;
+  background:#dc2626;
+  color:white;
+  padding:13px 25px;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:bold;
 }
 
 .documentary-button:hover {
-  background: #b91c1c;
-  transform: translateY(-2px);
+  background:#b91c1c;
 }
 
 /* GLOBAL NEWS */
 
 .news-section {
-  background: var(--panel2);
+  background:var(--panel2);
 }
 
 .news-banner {
-  max-width: 1100px;
-  margin: auto;
-  padding: 25px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, #102b50, #075985);
-  text-align: center;
+  max-width:1100px;
+  margin:auto;
+  padding:25px;
+  border-radius:14px;
+  background:linear-gradient(135deg,#102b50,#075985);
+  text-align:center;
 }
 
 .news-banner p {
-  color: #dbeafe;
-  margin: 8px 0 18px;
+  color:#dbeafe;
+  margin:8px 0 18px;
 }
 
 .news-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 20px;
-  max-width: 1100px;
-  margin: 25px auto 0;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:20px;
+  max-width:1100px;
+  margin:25px auto 0;
 }
 
 .news-card {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 13px;
-  padding: 23px;
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:13px;
+  padding:23px;
 }
 
 .news-card h3 {
-  color: var(--blue);
-  margin-bottom: 10px;
+  color:var(--blue);
+  margin-bottom:10px;
 }
 
 .news-card p {
-  color: var(--muted);
-  font-size: 14px;
-  margin-bottom: 16px;
+  color:var(--muted);
+  font-size:14px;
+  margin-bottom:16px;
 }
 
-/* GLOBAL WEATHER */
+/* UPDATED GLOBAL WEATHER */
 
 #global-weather {
-  padding: 35px 22px;
-  margin: 35px auto;
-  max-width: 1100px;
-  border-radius: 20px;
-  background: linear-gradient(145deg, #102b50, #176b91);
-  color: white;
+  background:linear-gradient(145deg,#102b50,#176b91);
+  padding:65px 7%;
+  text-align:center;
 }
 
-#global-weather h2 {
-  text-align: center;
-  font-size: 28px;
+.weather-intro {
+  max-width:750px;
+  margin:0 auto 25px;
+  color:#d8edff;
 }
 
-.gw-subtitle {
-  text-align: center;
-  color: #d8edff;
+.weather-feature {
+  max-width:1050px;
+  margin:30px auto;
+  padding:25px;
+  background:rgba(255,255,255,.09);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:16px;
 }
 
-.gw-search {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin: 22px 0;
+.weather-feature h3 {
+  font-size:22px;
+  margin-bottom:12px;
 }
 
-.gw-search input {
-  flex: 1;
-  min-width: 160px;
-  padding: 13px;
-  border: 0;
-  border-radius: 9px;
-  font-size: 16px;
+.weather-feature p {
+  color:#d8edff;
+  margin-bottom:20px;
 }
 
-.gw-search button,
-.gw-location-btn {
-  padding: 12px 17px;
-  border: 0;
-  border-radius: 9px;
-  background: #ffd166;
-  color: #172b43;
-  font-weight: bold;
-  cursor: pointer;
+.weather-frame {
+  width:100%;
+  height:1500px;
+  display:block;
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:13px;
+  background:#071426;
 }
 
-.gw-location-btn {
-  width: 100%;
-  margin-bottom: 18px;
-  background: #45d6b1;
+.weather-actions {
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:22px;
 }
 
-.gw-status {
-  text-align: center;
-  margin: 12px 0;
-  color: #fff2b3;
+.weather-actions .btn {
+  background:#0284c7;
 }
 
-.gw-current {
-  background: rgba(255,255,255,.12);
-  padding: 22px;
-  border-radius: 16px;
-  text-align: center;
-  margin-top: 15px;
+.weather-actions .btn-secondary {
+  background:#173b5b;
+  border:1px solid rgba(255,255,255,.2);
 }
 
-.gw-temp {
-  font-size: 55px;
-  font-weight: bold;
-  margin: 12px;
-}
-
-.gw-icon {
-  font-size: 55px;
-}
-
-.gw-details {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.gw-detail {
-  background: rgba(255,255,255,.13);
-  padding: 14px 5px;
-  border-radius: 10px;
-  text-align: center;
-}
-
-.gw-forecast {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(105px, 1fr));
-  gap: 10px;
-  margin-top: 18px;
-}
-
-.gw-day {
-  background: rgba(255,255,255,.13);
-  padding: 13px 5px;
-  text-align: center;
-  border-radius: 12px;
-  font-size: 13px;
-}
-
-.gw-day-icon {
-  font-size: 28px;
-  margin: 8px 0;
-}
-
-.gw-footer {
-  text-align: center;
-  font-size: 12px;
-  color: #c9e5f5;
-  margin-top: 22px;
-}
-
-.gw-footer a {
-  color: #bceaff;
-}
-
-/* BUSINESS DEVELOPMENT */
+/* BUSINESS */
 
 .business-section {
-  background: #0a1222;
+  background:#0a1222;
 }
 
 .business-intro {
-  max-width: 850px;
-  text-align: center;
-  margin: 0 auto 30px;
-  color: var(--muted);
+  max-width:850px;
+  text-align:center;
+  margin:0 auto 30px;
+  color:var(--muted);
 }
 
 .business-note {
-  max-width: 900px;
-  margin: 30px auto 0;
-  padding: 20px;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  color: var(--muted);
-  text-align: center;
-  font-size: 13px;
+  max-width:900px;
+  margin:30px auto 0;
+  padding:20px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  color:var(--muted);
+  text-align:center;
+  font-size:13px;
 }
 
 /* ABOUT */
 
 .about {
-  text-align: center;
-  background: var(--panel2);
+  text-align:center;
+  background:var(--panel2);
 }
 
 .about p {
-  max-width: 750px;
-  margin: 15px auto;
-  color: var(--muted);
+  max-width:750px;
+  margin:15px auto;
+  color:var(--muted);
 }
 
 .about strong {
-  color: var(--blue);
+  color:var(--blue);
 }
 
 /* CONTACT */
 
 .contact {
-  text-align: center;
+  text-align:center;
 }
 
 .contact p {
-  color: var(--muted);
-  margin: 12px 0 25px;
+  color:var(--muted);
+  margin:12px 0 25px;
 }
 
 /* FOOTER */
 
 footer {
-  text-align: center;
-  padding: 30px 15px;
-  border-top: 1px solid #1e293b;
-  color: #64748b;
-  font-size: 13px;
+  text-align:center;
+  padding:30px 15px;
+  border-top:1px solid #1e293b;
+  color:#64748b;
+  font-size:13px;
 }
 
 footer a {
-  color: var(--blue);
-  text-decoration: none;
+  color:var(--blue);
+  text-decoration:none;
 }
 
-@media(max-width: 760px) {
+@media(max-width:760px) {
+
   header {
-    flex-direction: column;
-    gap: 13px;
-    padding: 15px 5%;
+    flex-direction:column;
+    gap:13px;
+    padding:15px 5%;
   }
 
   nav {
-    justify-content: center;
-    gap: 12px;
+    justify-content:center;
+    gap:12px;
   }
 
   nav a {
-    font-size: 12px;
+    font-size:12px;
   }
 
   .hero {
-    padding: 75px 18px;
+    padding:75px 18px;
   }
 
   section {
-    padding: 60px 6%;
+    padding:60px 6%;
   }
 
   .cards {
-    grid-template-columns: 1fr;
-  }
-
-  .gw-details {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns:1fr;
   }
 
   .documentary-player {
-    border-radius: 10px;
+    border-radius:10px;
+  }
+
+  .weather-frame {
+    height:1650px;
+  }
+
+  .weather-feature {
+    padding:12px;
   }
 }
 
-@media(prefers-reduced-motion: reduce) {
+@media(prefers-reduced-motion:reduce) {
   html {
-    scroll-behavior: auto;
+    scroll-behavior:auto;
   }
 
   *,
   *::before,
   *::after {
-    transition: none !important;
-    animation: none !important;
+    transition:none !important;
+    animation:none !important;
   }
 }
 </style>
@@ -680,7 +614,9 @@ footer a {
     Technology should be simple, accessible and helpful to everyone.
   </p>
 
-  <a href="#ai-tools" class="btn">Explore Our Digital Tools</a>
+  <a href="#ai-tools" class="btn">
+    Explore Our Digital Tools
+  </a>
 
 </section>
 
@@ -715,9 +651,7 @@ footer a {
 
     <div class="documentary-details">
 
-      <h3>
-        Unseen Visitors: Are We Alone?
-      </h3>
+      <h3>Unseen Visitors: Are We Alone?</h3>
 
       <p>
         Are we alone in the universe?
@@ -867,91 +801,60 @@ footer a {
 
 </section>
 
-<!-- GLOBAL WEATHER -->
+<!-- UPDATED GLOBAL WEATHER -->
 
 <section id="global-weather">
 
-  <h2>🌍 Global Weather</h2>
+  <h2 class="section-title">🌍 Global Weather Center</h2>
 
-  <p class="gw-subtitle">
-    Explore current weather conditions around the world!
+  <p class="weather-intro">
+    Discover weather conditions around the world.
+    Search cities, check your current location,
+    explore seven-day forecasts and navigate
+    our interactive worldwide weather map.
   </p>
 
-  <div class="gw-search">
+  <div class="weather-feature">
 
-    <input
-      type="text"
-      id="gw-city"
-      placeholder="Search city (e.g. Manila)"
-      aria-label="Search city"
-      autocomplete="off"
-    >
+    <h3>🌦️ Explore Interactive Global Weather</h3>
 
-    <button type="button" id="gw-search-btn">
-      Search
-    </button>
+    <p>
+      Experience worldwide weather information
+      powered by Open-Meteo, with an interactive map
+      that lets you explore different locations.
+    </p>
 
-  </div>
+    <!-- STANDALONE GLOBAL WEATHER EMBED -->
 
-  <button
-    type="button"
-    class="gw-location-btn"
-    id="gw-location-btn">
-    📍 Use My Location
-  </button>
+    <iframe
+      class="weather-frame"
+      src="global-weather.html"
+      title="Natz1122Labs Interactive Global Weather"
+      loading="lazy"
+      allow="geolocation"
+      referrerpolicy="strict-origin-when-cross-origin">
+    </iframe>
 
-  <div class="gw-status" id="gw-status" role="status" aria-live="polite">
-    Loading weather...
-  </div>
+    <div class="weather-actions">
 
-  <div class="gw-current">
+      <a
+        href="global-weather.html"
+        class="btn"
+        target="_blank"
+        rel="noopener noreferrer">
+        🌍 Open Full Global Weather →
+      </a>
 
-    <h3 id="gw-place">Your Weather</h3>
-
-    <div class="gw-icon" id="gw-icon" aria-hidden="true">🌤️</div>
-
-    <div class="gw-temp" id="gw-temp">--°C</div>
-
-    <div id="gw-condition">Waiting for weather data...</div>
-
-    <div class="gw-details">
-
-      <div class="gw-detail">
-        🌡️<br>Feels like<br>
-        <strong id="gw-feels">--°C</strong>
-      </div>
-
-      <div class="gw-detail">
-        💧<br>Humidity<br>
-        <strong id="gw-humidity">--%</strong>
-      </div>
-
-      <div class="gw-detail">
-        💨<br>Wind<br>
-        <strong id="gw-wind">-- km/h</strong>
-      </div>
+      <a
+        href="https://open-meteo.com/"
+        class="btn btn-secondary"
+        target="_blank"
+        rel="noopener noreferrer">
+        Weather Data Source
+      </a>
 
     </div>
 
-  </div>
-
-  <h3 style="text-align:center;margin-top:28px;">
-    📅 7-Day Forecast
-  </h3>
-
-  <div class="gw-forecast" id="gw-forecast">
-    <div class="gw-day">Loading forecast...</div>
-  </div>
-
-  <div class="gw-footer">
-    Weather data provided by Open-Meteo.
-    <br>
-    <a
-      href="https://open-meteo.com/"
-      target="_blank"
-      rel="noopener noreferrer">
-      Open-Meteo Weather API
-    </a>
   </div>
 
 </section>
@@ -1308,276 +1211,6 @@ footer a {
   <a href="#home">Back to Top ↑</a>
 
 </footer>
-
-<!-- GLOBAL WEATHER JAVASCRIPT -->
-
-<script>
-(function () {
-
-  const cityInput = document.getElementById("gw-city");
-  const status = document.getElementById("gw-status");
-
-  function weatherInfo(code) {
-
-    if (code === 0) return ["☀️", "Clear sky"];
-    if (code === 1) return ["🌤️", "Mainly clear"];
-    if (code === 2) return ["⛅", "Partly cloudy"];
-    if (code === 3) return ["☁️", "Overcast"];
-
-    if (code === 45 || code === 48) {
-      return ["🌫️", "Foggy"];
-    }
-
-    if ([51, 53, 55, 56, 57].includes(code)) {
-      return ["🌦️", "Drizzle"];
-    }
-
-    if ([61, 63, 65, 66, 67].includes(code)) {
-      return ["🌧️", "Rain"];
-    }
-
-    if ([71, 73, 75, 77].includes(code)) {
-      return ["❄️", "Snow"];
-    }
-
-    if ([80, 81, 82].includes(code)) {
-      return ["🌧️", "Rain showers"];
-    }
-
-    if ([85, 86].includes(code)) {
-      return ["🌨️", "Snow showers"];
-    }
-
-    if ([95, 96, 99].includes(code)) {
-      return ["⛈️", "Thunderstorms"];
-    }
-
-    return ["🌤️", "Unknown conditions"];
-  }
-
-  function showStatus(message) {
-    status.textContent = message;
-  }
-
-  async function getWeather(lat, lon, place) {
-
-    showStatus("Getting the latest weather...");
-
-    try {
-
-      const url =
-        "https://api.open-meteo.com/v1/forecast" +
-        "?latitude=" + encodeURIComponent(lat) +
-        "&longitude=" + encodeURIComponent(lon) +
-        "&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m" +
-        "&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max" +
-        "&timezone=auto&forecast_days=7";
-
-      const response = await fetch(url);
-
-      if (!response.ok) {
-        throw new Error("Weather service unavailable");
-      }
-
-      const data = await response.json();
-
-      if (!data.current || !data.daily) {
-        throw new Error("Weather data is incomplete");
-      }
-
-      const current = data.current;
-      const daily = data.daily;
-      const info = weatherInfo(current.weather_code);
-
-      document.getElementById("gw-place").textContent =
-        "📍 " + place;
-
-      document.getElementById("gw-icon").textContent =
-        info[0];
-
-      document.getElementById("gw-temp").textContent =
-        Math.round(current.temperature_2m) + "°C";
-
-      document.getElementById("gw-condition").textContent =
-        info[1];
-
-      document.getElementById("gw-feels").textContent =
-        Math.round(current.apparent_temperature) + "°C";
-
-      document.getElementById("gw-humidity").textContent =
-        current.relative_humidity_2m + "%";
-
-      document.getElementById("gw-wind").textContent =
-        current.wind_speed_10m + " km/h";
-
-      const forecast = document.getElementById("gw-forecast");
-
-      forecast.replaceChildren();
-
-      for (let i = 0; i < daily.time.length; i++) {
-
-        const day = new Date(daily.time[i] + "T12:00:00");
-
-        const dayName = day.toLocaleDateString("en-US", {
-          weekday: "short"
-        });
-
-        const dayInfo = weatherInfo(daily.weather_code[i]);
-
-        const dayCard = document.createElement("div");
-        dayCard.className = "gw-day";
-
-        const name = document.createElement("strong");
-        name.textContent = dayName;
-
-        const icon = document.createElement("div");
-        icon.className = "gw-day-icon";
-        icon.textContent = dayInfo[0];
-
-        const condition = document.createElement("div");
-        condition.textContent = dayInfo[1];
-
-        const temperature = document.createElement("strong");
-        temperature.textContent =
-          Math.round(daily.temperature_2m_max[i]) + "° / " +
-          Math.round(daily.temperature_2m_min[i]) + "°";
-
-        const rain = document.createElement("div");
-        rain.textContent =
-          "🌧️ " +
-          (daily.precipitation_probability_max[i] ?? "--") + "%";
-
-        dayCard.append(name, icon, condition, temperature, rain);
-        forecast.appendChild(dayCard);
-      }
-
-      showStatus("Weather successfully updated!");
-
-    } catch (error) {
-
-      showStatus("Unable to load weather. Please try again.");
-      console.error(error);
-
-    }
-
-  }
-
-  async function searchCity() {
-
-    const city = cityInput.value.trim();
-
-    if (!city) {
-      showStatus("Please enter a city name.");
-      return;
-    }
-
-    showStatus("Searching for " + city + "...");
-
-    try {
-
-      const url =
-        "https://geocoding-api.open-meteo.com/v1/search?name=" +
-        encodeURIComponent(city) +
-        "&count=1&language=en&format=json";
-
-      const response = await fetch(url);
-
-      if (!response.ok) {
-        throw new Error("City search failed");
-      }
-
-      const data = await response.json();
-
-      if (!data.results || !data.results.length) {
-        showStatus("City not found. Please try another city.");
-        return;
-      }
-
-      const result = data.results[0];
-
-      const place = [
-        result.name,
-        result.admin1,
-        result.country
-      ].filter(Boolean).join(", ");
-
-      await getWeather(
-        result.latitude,
-        result.longitude,
-        place
-      );
-
-    } catch (error) {
-
-      showStatus("City search failed. Please try again.");
-      console.error(error);
-
-    }
-
-  }
-
-  function locateUser() {
-
-    if (!navigator.geolocation) {
-      showStatus("Location detection is not supported. Search for a city instead.");
-      return;
-    }
-
-    showStatus("Requesting your location permission...");
-
-    navigator.geolocation.getCurrentPosition(
-
-      position => {
-
-        getWeather(
-          position.coords.latitude,
-          position.coords.longitude,
-          "Your Current Location"
-        );
-
-      },
-
-      error => {
-
-        showStatus(
-          error.code === 1
-            ? "Location permission denied. Search for a city instead."
-            : "Unable to detect location. Please search for a city."
-        );
-
-      },
-
-      {
-        enableHighAccuracy: false,
-        timeout: 12000
-      }
-
-    );
-
-  }
-
-  document.getElementById("gw-search-btn")
-    .addEventListener("click", searchCity);
-
-  document.getElementById("gw-location-btn")
-    .addEventListener("click", locateUser);
-
-  cityInput.addEventListener("keydown", event => {
-
-    if (event.key === "Enter") {
-      searchCity();
-    }
-
-  });
-
-  // Automatically try local weather.
-  // Visitors can still search for any city
-  // if location permission is unavailable.
-
-  locateUser();
-
-})();
-</script>
 
 </body>
 </html>
