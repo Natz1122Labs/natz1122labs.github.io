@@ -5,212 +5,190 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#080d1a">
-<meta name="description" content="Natz1122Labs — Your City in One Glance.">
+<meta name="description" content="Your City in One Glance.">
 <link rel="manifest" href="/manifest.json">
-<title>Natz1122Labs | Your City in One Glance</title>
+<title>Your City in One Glance</title>
 
 <style>
 :root {
   color-scheme: dark;
-  --bg:#080d1a;
-  --panel:#111c30;
-  --line:#263850;
-  --blue:#38bdf8;
-  --muted:#aab8cc;
+  --bg: #080d1a;
+  --panel: #111c30;
+  --line: #263850;
+  --blue: #38bdf8;
+  --muted: #aab8cc;
 }
-* {box-sizing:border-box}
-html,body {
-  margin:0;
-  width:100%;
-  min-height:100%;
-  background:var(--bg);
-  color:#f1f5f9;
-  font-family:Arial,sans-serif;
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+  background: var(--bg);
+  color: #f1f5f9;
+  font-family: Arial, sans-serif;
 }
+
 body {
-  min-height:100dvh;
-  display:flex;
-  flex-direction:column;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
 }
+
 header {
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  padding:13px 16px;
-  border-bottom:1px solid var(--line);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 64px;
+  padding: 10px 16px;
+  background: #080d1a;
+  border-bottom: 1px solid var(--line);
 }
-.brand {
-  font-weight:800;
-  color:var(--blue);
-  font-size:20px;
+
+.home-btn {
+  border: 1px solid var(--blue);
+  background: #10283e;
+  color: white;
+  padding: 11px 30px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  cursor: pointer;
 }
-.tagline {
-  font-size:12px;
-  color:var(--muted);
-  margin-top:3px;
+
+.home-btn:active {
+  background: #164568;
 }
-.home-link,.back-link {
-  color:#dbeafe;
-  text-decoration:none;
-  font-size:13px;
-  border:1px solid var(--line);
-  border-radius:10px;
-  padding:9px 11px;
-}
+
 main {
-  flex:1;
-  display:flex;
-  flex-direction:column;
-  min-height:0;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
 }
-.dashboard {
-  width:100%;
-  max-width:850px;
-  margin:auto;
-  padding:24px 16px;
+
+.home-screen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 25px 18px;
 }
-.hero {
-  text-align:center;
-  padding:12px 5px 24px;
+
+.home-screen h1 {
+  font-size: 25px;
+  margin: 0 0 10px;
 }
-.hero h1 {
-  font-size:27px;
-  margin:0 0 9px;
+
+.home-screen p {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 0 0 30px;
 }
-.hero p {
-  color:var(--muted);
-  font-size:14px;
-  line-height:1.6;
-  margin:0;
-}
+
 .services {
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:12px;
+  width: 100%;
+  max-width: 500px;
+  display: grid;
+  gap: 15px;
 }
+
 .service {
-  min-width:0;
-  min-height:155px;
-  padding:18px 10px;
-  border:1px solid var(--line);
-  border-radius:16px;
-  background:var(--panel);
-  color:white;
-  text-align:center;
-  cursor:pointer;
-  transition:background .2s,border-color .2s;
+  width: 100%;
+  min-height: 76px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  background: var(--panel);
+  color: white;
+  font-size: 18px;
+  font-weight: 800;
+  cursor: pointer;
 }
+
 .service:active {
-  background:#123653;
-  border-color:var(--blue);
+  background: #12334b;
+  border-color: var(--blue);
 }
-.service .emoji {
-  display:block;
-  font-size:35px;
-  margin-bottom:12px;
-}
-.service strong {
-  display:block;
-  font-size:18px;
-  margin-bottom:7px;
-}
-.service small {
-  display:block;
-  color:var(--muted);
-  font-size:11px;
-  line-height:1.5;
-}
+
 .viewer {
-  display:none;
-  flex:1;
-  min-height:0;
-  position:relative;
+  display: none;
+  flex: 1;
+  min-height: 0;
+  position: relative;
 }
+
 .viewer.active {
-  display:flex;
-  flex-direction:column;
+  display: flex;
 }
-.viewer iframe {
-  width:100%;
-  flex:1;
-  min-height:550px;
-  border:0;
-  background:var(--bg);
+
+iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+  border: 0;
+  background: var(--bg);
 }
-.viewer-top {
-  padding:9px 13px;
-  background:#0b1424;
-  border-bottom:1px solid var(--line);
-}
+
 .loading {
-  display:none;
-  position:absolute;
-  inset:45px 0 0;
-  place-items:center;
-  background:var(--bg);
-  color:var(--muted);
-  pointer-events:none;
-  z-index:2;
+  position: absolute;
+  inset: 0;
+  display: none;
+  place-items: center;
+  background: var(--bg);
+  color: var(--muted);
+  pointer-events: none;
+  z-index: 2;
 }
-.loading.active {
-  display:grid;
+
+.loading.visible {
+  display: grid;
 }
+
 nav {
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:8px;
-  padding:10px 12px;
-  background:#0b1424;
-  border-top:1px solid var(--line);
-  padding-bottom:max(10px,env(safe-area-inset-bottom));
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding: 10px 12px;
+  background: #0b1424;
+  border-top: 1px solid var(--line);
+  padding-bottom: max(10px, env(safe-area-inset-bottom));
 }
+
 nav button {
-  border:1px solid var(--line);
-  background:var(--panel);
-  color:#e2e8f0;
-  border-radius:11px;
-  padding:12px 4px;
-  min-height:49px;
-  font-size:15px;
-  font-weight:700;
-  cursor:pointer;
+  min-height: 52px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: #e2e8f0;
+  border-radius: 12px;
+  padding: 10px 4px;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
 }
+
 nav button[aria-pressed="true"] {
-  background:#0c3550;
-  border-color:var(--blue);
-  color:white;
+  background: #0c3550;
+  border-color: var(--blue);
+  color: white;
 }
-footer {
-  text-align:center;
-  color:#8091a8;
-  font-size:11px;
-  padding:8px;
-  border-top:1px solid #1e293b;
-}
-@media(max-width:480px) {
-  .services {grid-template-columns:1fr}
-  .service {
-    min-height:95px;
-    display:grid;
-    grid-template-columns:55px 1fr;
-    align-items:center;
-    text-align:left;
-    padding:13px;
-    gap:10px;
+
+@media (min-width: 760px) {
+  body {
+    max-width: 1100px;
+    margin: 0 auto;
+    border-left: 1px solid var(--line);
+    border-right: 1px solid var(--line);
   }
-  .service .emoji {
-    grid-row:1;
-    font-size:32px;
-    margin:0;
-    text-align:center;
+
+  iframe {
+    min-height: 600px;
   }
-  .service strong {
-    font-size:18px;
-    margin:0 0 5px;
-  }
-  .service small {font-size:12px}
-  .hero h1 {font-size:23px}
 }
 </style>
 </head>
@@ -218,183 +196,152 @@ footer {
 <body>
 
 <header>
-  <div>
-    <div class="brand">Natz1122Labs</div>
-    <div class="tagline">Innovation for Everyone</div>
-  </div>
-  <a class="home-link" href="/">Main website</a>
+  <button class="home-btn" id="homeButton" type="button">
+    ⌂ HOME
+  </button>
 </header>
 
 <main>
 
-<section class="dashboard" id="dashboard">
-  <div class="hero">
+  <section class="home-screen" id="homeScreen">
     <h1>Your City in One Glance</h1>
-    <p>Welcome to Natz1122Labs. Choose a service to get started.</p>
-  </div>
+    <p>News, weather and translation — together in one place.</p>
 
-  <div class="services">
+    <div class="services">
+      <button class="service" data-page="news">
+        🌍 Global News
+      </button>
 
-    <button class="service" data-page="news" type="button">
-      <span class="emoji">🌍</span>
-      <span>
-        <strong>Global News</strong>
-        <small>Local and international headlines, business, technology and world events.</small>
-      </span>
-    </button>
+      <button class="service" data-page="weather">
+        🌦️ Global Weather
+      </button>
 
-    <button class="service" data-page="weather" type="button">
-      <span class="emoji">🌦️</span>
-      <span>
-        <strong>Global Weather</strong>
-        <small>Live weather, worldwide interactive map and seven-day forecasts.</small>
-      </span>
-    </button>
+      <button class="service" data-page="translator">
+        🗣️ Global Translator
+      </button>
+    </div>
+  </section>
 
-    <button class="service" data-page="translator" type="button">
-      <span class="emoji">🗣️</span>
-      <span>
-        <strong>Global Translator</strong>
-        <small>Translate between more than 100 languages.</small>
-      </span>
-    </button>
+  <section class="viewer" id="viewer">
+    <div class="loading" id="loading">
+      Loading service...
+    </div>
 
-  </div>
-</section>
-
-<section class="viewer" id="viewer">
-  <div class="viewer-top">
-    <button class="back-link" id="backButton" type="button">
-      ← All Services
-    </button>
-  </div>
-
-  <div class="loading" id="loading">Loading service...</div>
-
-  <iframe
-    id="moduleFrame"
-    title="Natz1122Labs Service"
-    allow="geolocation"
-    referrerpolicy="strict-origin-when-cross-origin">
-  </iframe>
-</section>
+    <iframe
+      id="moduleFrame"
+      title="Selected service"
+      allow="geolocation"
+      referrerpolicy="strict-origin-when-cross-origin">
+    </iframe>
+  </section>
 
 </main>
 
 <nav aria-label="Main services">
-  <button data-page="news" aria-pressed="false" type="button">🌍 News</button>
-  <button data-page="weather" aria-pressed="false" type="button">🌦️ Weather</button>
-  <button data-page="translator" aria-pressed="false" type="button">🗣️ Translator</button>
-</nav>
+  <button data-page="news" aria-pressed="false">
+    🌍 News
+  </button>
 
-<footer>
-  © 2026 Natz1122Labs · Innovation for Everyone
-</footer>
+  <button data-page="weather" aria-pressed="false">
+    🌦️ Weather
+  </button>
+
+  <button data-page="translator" aria-pressed="false">
+    🗣️ Translator
+  </button>
+</nav>
 
 <script>
 (function() {
-  "use strict";
 
-  const dashboard = document.getElementById("dashboard");
-  const viewer = document.getElementById("viewer");
-  const frame = document.getElementById("moduleFrame");
-  const loading = document.getElementById("loading");
-  const backButton = document.getElementById("backButton");
+  const homeScreen = document.getElementById('homeScreen');
+  const viewer = document.getElementById('viewer');
+  const frame = document.getElementById('moduleFrame');
+  const loading = document.getElementById('loading');
+  const homeButton = document.getElementById('homeButton');
 
-  const buttons = document.querySelectorAll("[data-page]");
+  const buttons = [
+    ...document.querySelectorAll('[data-page]')
+  ];
 
   const modules = {
     news: {
-      url: "/global-news.html",
-      title: "Natz1122Labs Global News"
+      url: '/global-news.html',
+      title: 'Global News'
     },
+
     weather: {
-      url: "/global-weather.html",
-      title: "Natz1122Labs Global Weather"
+      url: '/global-weather.html',
+      title: 'Global Weather'
     },
+
     translator: {
-      url: "/translator.html",
-      title: "Natz1122Labs Global Translator"
+      url: '/translator.html',
+      title: 'Global Translator'
     }
   };
 
-  let currentPage = "";
+  function goHome() {
+    homeScreen.style.display = 'flex';
+    viewer.classList.remove('active');
+
+    buttons.forEach(button => {
+      button.setAttribute('aria-pressed', 'false');
+    });
+
+    history.replaceState(null, '', location.pathname);
+  }
 
   function selectModule(key) {
     const item = modules[key];
+
     if (!item) return;
 
-    currentPage = key;
-
-    dashboard.style.display = "none";
-    viewer.classList.add("active");
+    homeScreen.style.display = 'none';
+    viewer.classList.add('active');
 
     buttons.forEach(button => {
       button.setAttribute(
-        "aria-pressed",
+        'aria-pressed',
         String(button.dataset.page === key)
       );
     });
 
-    loading.textContent = "Loading " + item.title + "...";
-    loading.classList.add("active");
+    loading.textContent = 'Loading ' + item.title + '...';
+    loading.classList.add('visible');
 
     frame.title = item.title;
 
-    if (frame.dataset.loaded !== key) {
-      frame.dataset.loaded = key;
+    if (frame.getAttribute('src') !== item.url) {
       frame.src = item.url;
     } else {
-      loading.classList.remove("active");
+      loading.classList.remove('visible');
     }
 
-    try {
-      history.replaceState(null, "", "#" + key);
-    } catch(error) {}
-
-    window.scrollTo(0, 0);
+    history.replaceState(null, '', '#' + key);
   }
 
-  function showDashboard() {
-    currentPage = "";
-
-    viewer.classList.remove("active");
-    dashboard.style.display = "block";
-
-    buttons.forEach(button => {
-      button.setAttribute("aria-pressed", "false");
-    });
-
-    frame.src = "about:blank";
-    frame.dataset.loaded = "";
-
-    loading.classList.remove("active");
-
-    try {
-      history.replaceState(null, "", location.pathname);
-    } catch(error) {}
-
-    window.scrollTo(0, 0);
-  }
-
-  frame.addEventListener("load", function() {
-    loading.classList.remove("active");
+  frame.addEventListener('load', function() {
+    loading.classList.remove('visible');
   });
 
   buttons.forEach(button => {
-    button.addEventListener("click", function() {
+    button.addEventListener('click', function() {
       selectModule(button.dataset.page);
     });
   });
 
-  backButton.addEventListener("click", showDashboard);
+  homeButton.addEventListener('click', goHome);
 
-  // Always start on the neutral welcome screen.
+  // Always start with a neutral home screen.
   // No service is automatically selected.
 
-  if ("serviceWorker" in navigator) {
-    window.addEventListener("load", function() {
-      navigator.serviceWorker.register("/sw.js").catch(function() {});
+  goHome();
+
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('/sw.js')
+        .catch(function() {});
     });
   }
 
