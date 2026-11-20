@@ -112,7 +112,7 @@ main {
 }
 .service strong {
   display:block;
-  font-size:15px;
+  font-size:18px;
   margin-bottom:7px;
 }
 .service small {
@@ -172,7 +172,7 @@ nav button {
   border-radius:11px;
   padding:12px 4px;
   min-height:49px;
-  font-size:13px;
+  font-size:15px;
   font-weight:700;
   cursor:pointer;
 }
@@ -205,7 +205,10 @@ footer {
     margin:0;
     text-align:center;
   }
-  .service strong {margin:0 0 5px}
+  .service strong {
+    font-size:18px;
+    margin:0 0 5px;
+  }
   .service small {font-size:12px}
   .hero h1 {font-size:23px}
 }
@@ -386,11 +389,8 @@ footer {
 
   backButton.addEventListener("click", showDashboard);
 
-  const initial = location.hash.slice(1);
-
-  if (modules[initial]) {
-    selectModule(initial);
-  }
+  // Always start on the neutral welcome screen.
+  // No service is automatically selected.
 
   if ("serviceWorker" in navigator) {
     window.addEventListener("load", function() {
