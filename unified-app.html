@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#080d1a">
+<meta name="description" content="Natz1122Labs — Your City in One Glance.">
+<link rel="manifest" href="/manifest.json">
+<title>Natz1122Labs | Your City in One Glance</title>
+<style>
+:root{color-scheme:dark;--bg:#080d1a;--panel:#111c30;--line:#263850;--blue:#38bdf8;--muted:#aab8cc}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;background:var(--bg);color:#f1f5f9;font-family:Arial,sans-serif}
+body{display:flex;flex-direction:column;min-height:100dvh}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;background:#080d1a;border-bottom:1px solid var(--line)}
+.brand{font-weight:800;color:var(--blue);font-size:19px}
+.tagline{font-size:12px;color:var(--muted)}
+.home-link{color:#dbeafe;text-decoration:none;font-size:13px;border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+main{flex:1;min-height:0;display:flex;flex-direction:column}
+.welcome{padding:14px 16px 10px}
+.welcome h1{font-size:20px;margin:0 0 4px}
+.welcome p{margin:0;color:var(--muted);font-size:13px}
+.viewer{position:relative;flex:1;min-height:320px}
+iframe{display:block;width:100%;height:100%;min-height:320px;border:0;background:var(--bg)}
+.loading{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);font-size:14px;pointer-events:none}
+nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:10px 12px;background:#0b1424;border-top:1px solid var(--line);padding-bottom:max(10px,env(safe-area-inset-bottom))}
+nav button{border:1px solid var(--line);background:var(--panel);color:#e2e8f0;border-radius:12px;padding:11px 5px;font-size:13px;font-weight:700;min-height:48px}
+nav button[aria-pressed=true]{background:#0c3550;border-color:var(--blue);color:#fff}
+footer{text-align:center;color:#8091a8;font-size:11px;padding:7px;border-top:1px solid #1e293b}
+@media(min-width:760px){body{max-width:1100px;margin:0 auto;border-left:1px solid var(--line);border-right:1px solid var(--line)}.viewer,iframe{min-height:600px}}
+</style>
+</head>
+<body>
+<header>
+ <div>
+  <div class="brand">Natz1122Labs</div>
+  <div class="tagline">Innovation for Everyone</div>
+ </div>
+ <a class="home-link" href="/">Main website</a>
+</header>
+
+<main>
+ <section class="welcome">
+  <h1>Your City in One Glance</h1>
+  <p>News, weather and translation — together in one place.</p>
+ </section>
+
+ <section class="viewer">
+  <div class="loading" id="loading">Loading Global News…</div>
+  <iframe id="moduleFrame"
+   title="Natz1122Labs Global News"
+   src="/global-news.html"
+   allow="geolocation"
+   referrerpolicy="strict-origin-when-cross-origin"></iframe>
+ </section>
+</main>
+
+<nav aria-label="Main services">
+ <button data-page="news" aria-pressed="true">🌍 News</button>
+ <button data-page="weather" aria-pressed="false">🌦️ Weather</button>
+ <button data-page="translator" aria-pressed="false">🗣️ Translator</button>
+</nav>
+
+<footer>© 2026 Natz1122Labs · Innovation for Everyone</footer>
+
+<script>
+(function(){
+ const frame=document.getElementById('moduleFrame');
+ const loading=document.getElementById('loading');
+ const buttons=[...document.querySelectorAll('nav button')];
+
+ const modules={
+  news:{url:'/global-news.html',title:'Natz1122Labs Global News'},
+  weather:{url:'/global-weather.html',title:'Natz1122Labs Global Weather'},
+  translator:{url:'/translator.html',title:'Natz1122Labs Global Translator'}
+ };
+
+ function selectModule(key){
+  const item=modules[key];
+  if(!item)return;
+
+  buttons.forEach(button=>{
+   button.setAttribute('aria-pressed',String(button.dataset.page===key));
+  });
+
+  loading.textContent='Loading '+key+'…';
+  loading.style.display='grid';
+  frame.title=item.title;
+
+  if(frame.getAttribute('src')!==item.url){
+   frame.src=item.url;
+  }
+
+  try{history.replaceState(null,'','#'+key)}catch(error){}
+ }
+
+ frame.addEventListener('load',()=>{
+  loading.style.display='none';
+ });
+
+ buttons.forEach(button=>{
+  button.addEventListener('click',()=>{
+   selectModule(button.dataset.page);
+  });
+ });
+
+ const initial=location.hash.slice(1);
+ if(modules[initial])selectModule(initial);
+
+ if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>{
+   navigator.serviceWorker.register('/sw.js').catch(()=>{});
+  });
+ }
+})();
+</script>
+</body>
+</html>
