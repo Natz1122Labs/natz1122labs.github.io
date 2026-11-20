@@ -5,9 +5,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#080d1a">
-<meta name="description" content="Your City in One Glance.">
+<meta name="description" content="Natz1122Labs — Your City in One Glance.">
 <link rel="manifest" href="/manifest.json">
-<title>Your City in One Glance</title>
+<title>Natz1122Labs | Your City in One Glance</title>
 
 <style>
 :root {
@@ -37,13 +37,12 @@ body {
 }
 
 header {
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 64px;
   padding: 10px 16px;
-  background: #080d1a;
+  background: var(--bg);
   border-bottom: 1px solid var(--line);
 }
 
@@ -208,15 +207,15 @@ nav button[aria-pressed="true"] {
     <p>News, weather and translation — together in one place.</p>
 
     <div class="services">
-      <button class="service" data-page="news">
+      <button class="service" type="button" data-page="news">
         🌍 Global News
       </button>
 
-      <button class="service" data-page="weather">
+      <button class="service" type="button" data-page="weather">
         🌦️ Global Weather
       </button>
 
-      <button class="service" data-page="translator">
+      <button class="service" type="button" data-page="translator">
         🗣️ Global Translator
       </button>
     </div>
@@ -238,21 +237,24 @@ nav button[aria-pressed="true"] {
 </main>
 
 <nav aria-label="Main services">
-  <button data-page="news" aria-pressed="false">
+  <button type="button" data-page="news" aria-pressed="false">
     🌍 News
   </button>
 
-  <button data-page="weather" aria-pressed="false">
+  <button type="button" data-page="weather" aria-pressed="false">
     🌦️ Weather
   </button>
 
-  <button data-page="translator" aria-pressed="false">
+  <button type="button" data-page="translator" aria-pressed="false">
     🗣️ Translator
   </button>
 </nav>
 
 <script>
 (function() {
+  'use strict';
+
+  const APP_HOME = '/unified-app.html';
 
   const homeScreen = document.getElementById('homeScreen');
   const viewer = document.getElementById('viewer');
@@ -281,23 +283,44 @@ nav button[aria-pressed="true"] {
     }
   };
 
+  // Return to the unified app's own home screen.
   function goHome() {
+
     homeScreen.style.display = 'flex';
+
     viewer.classList.remove('active');
 
+    loading.classList.remove('visible');
+
+    // Stop and clear the previously opened module.
+    frame.src = 'about:blank';
+
+    frame.title = 'Selected service';
+
+    // Clear service selection.
     buttons.forEach(button => {
       button.setAttribute('aria-pressed', 'false');
     });
 
-    history.replaceState(null, '', location.pathname);
+    // Keep the browser on the unified app.
+    history.replaceState(
+      null,
+      '',
+      APP_HOME
+    );
+
+    window.scrollTo(0, 0);
   }
 
+  // Open a service inside the unified app.
   function selectModule(key) {
+
     const item = modules[key];
 
     if (!item) return;
 
     homeScreen.style.display = 'none';
+
     viewer.classList.add('active');
 
     buttons.forEach(button => {
@@ -308,17 +331,20 @@ nav button[aria-pressed="true"] {
     });
 
     loading.textContent = 'Loading ' + item.title + '...';
+
     loading.classList.add('visible');
 
     frame.title = item.title;
 
-    if (frame.getAttribute('src') !== item.url) {
-      frame.src = item.url;
-    } else {
-      loading.classList.remove('visible');
-    }
+    // Load the selected module inside the iframe.
+    frame.src = item.url;
 
-    history.replaceState(null, '', '#' + key);
+    // Update the unified app URL, not the main website.
+    history.replaceState(
+      null,
+      '',
+      APP_HOME + '#' + key
+    );
   }
 
   frame.addEventListener('load', function() {
@@ -326,23 +352,33 @@ nav button[aria-pressed="true"] {
   });
 
   buttons.forEach(button => {
+
     button.addEventListener('click', function() {
       selectModule(button.dataset.page);
     });
+
   });
 
-  homeButton.addEventListener('click', goHome);
+  homeButton.addEventListener('click', function(event) {
+    event.preventDefault();
+    goHome();
+  });
 
-  // Always start with a neutral home screen.
-  // No service is automatically selected.
-
+  // Always initialize inside the unified app.
   goHome();
 
+  // Register existing service worker.
   if ('serviceWorker' in navigator) {
+
     window.addEventListener('load', function() {
+
       navigator.serviceWorker.register('/sw.js')
-        .catch(function() {});
+        .catch(function(error) {
+          console.log('Service worker registration failed:', error);
+        });
+
     });
+
   }
 
 })();
