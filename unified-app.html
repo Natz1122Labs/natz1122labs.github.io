@@ -8,112 +8,398 @@
 <meta name="description" content="Natz1122Labs — Your City in One Glance.">
 <link rel="manifest" href="/manifest.json">
 <title>Natz1122Labs | Your City in One Glance</title>
+
 <style>
-:root{color-scheme:dark;--bg:#080d1a;--panel:#111c30;--line:#263850;--blue:#38bdf8;--muted:#aab8cc}
-*{box-sizing:border-box}
-html,body{margin:0;width:100%;height:100%;background:var(--bg);color:#f1f5f9;font-family:Arial,sans-serif}
-body{display:flex;flex-direction:column;min-height:100dvh}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;background:#080d1a;border-bottom:1px solid var(--line)}
-.brand{font-weight:800;color:var(--blue);font-size:19px}
-.tagline{font-size:12px;color:var(--muted)}
-.home-link{color:#dbeafe;text-decoration:none;font-size:13px;border:1px solid var(--line);border-radius:10px;padding:8px 10px}
-main{flex:1;min-height:0;display:flex;flex-direction:column}
-.welcome{padding:14px 16px 10px}
-.welcome h1{font-size:20px;margin:0 0 4px}
-.welcome p{margin:0;color:var(--muted);font-size:13px}
-.viewer{position:relative;flex:1;min-height:320px}
-iframe{display:block;width:100%;height:100%;min-height:320px;border:0;background:var(--bg)}
-.loading{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);font-size:14px;pointer-events:none}
-nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:10px 12px;background:#0b1424;border-top:1px solid var(--line);padding-bottom:max(10px,env(safe-area-inset-bottom))}
-nav button{border:1px solid var(--line);background:var(--panel);color:#e2e8f0;border-radius:12px;padding:11px 5px;font-size:13px;font-weight:700;min-height:48px}
-nav button[aria-pressed=true]{background:#0c3550;border-color:var(--blue);color:#fff}
-footer{text-align:center;color:#8091a8;font-size:11px;padding:7px;border-top:1px solid #1e293b}
-@media(min-width:760px){body{max-width:1100px;margin:0 auto;border-left:1px solid var(--line);border-right:1px solid var(--line)}.viewer,iframe{min-height:600px}}
+:root {
+  color-scheme: dark;
+  --bg:#080d1a;
+  --panel:#111c30;
+  --line:#263850;
+  --blue:#38bdf8;
+  --muted:#aab8cc;
+}
+* {box-sizing:border-box}
+html,body {
+  margin:0;
+  width:100%;
+  min-height:100%;
+  background:var(--bg);
+  color:#f1f5f9;
+  font-family:Arial,sans-serif;
+}
+body {
+  min-height:100dvh;
+  display:flex;
+  flex-direction:column;
+}
+header {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:13px 16px;
+  border-bottom:1px solid var(--line);
+}
+.brand {
+  font-weight:800;
+  color:var(--blue);
+  font-size:20px;
+}
+.tagline {
+  font-size:12px;
+  color:var(--muted);
+  margin-top:3px;
+}
+.home-link,.back-link {
+  color:#dbeafe;
+  text-decoration:none;
+  font-size:13px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:9px 11px;
+}
+main {
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  min-height:0;
+}
+.dashboard {
+  width:100%;
+  max-width:850px;
+  margin:auto;
+  padding:24px 16px;
+}
+.hero {
+  text-align:center;
+  padding:12px 5px 24px;
+}
+.hero h1 {
+  font-size:27px;
+  margin:0 0 9px;
+}
+.hero p {
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.6;
+  margin:0;
+}
+.services {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+}
+.service {
+  min-width:0;
+  min-height:155px;
+  padding:18px 10px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:var(--panel);
+  color:white;
+  text-align:center;
+  cursor:pointer;
+  transition:background .2s,border-color .2s;
+}
+.service:active {
+  background:#123653;
+  border-color:var(--blue);
+}
+.service .emoji {
+  display:block;
+  font-size:35px;
+  margin-bottom:12px;
+}
+.service strong {
+  display:block;
+  font-size:15px;
+  margin-bottom:7px;
+}
+.service small {
+  display:block;
+  color:var(--muted);
+  font-size:11px;
+  line-height:1.5;
+}
+.viewer {
+  display:none;
+  flex:1;
+  min-height:0;
+  position:relative;
+}
+.viewer.active {
+  display:flex;
+  flex-direction:column;
+}
+.viewer iframe {
+  width:100%;
+  flex:1;
+  min-height:550px;
+  border:0;
+  background:var(--bg);
+}
+.viewer-top {
+  padding:9px 13px;
+  background:#0b1424;
+  border-bottom:1px solid var(--line);
+}
+.loading {
+  display:none;
+  position:absolute;
+  inset:45px 0 0;
+  place-items:center;
+  background:var(--bg);
+  color:var(--muted);
+  pointer-events:none;
+  z-index:2;
+}
+.loading.active {
+  display:grid;
+}
+nav {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:8px;
+  padding:10px 12px;
+  background:#0b1424;
+  border-top:1px solid var(--line);
+  padding-bottom:max(10px,env(safe-area-inset-bottom));
+}
+nav button {
+  border:1px solid var(--line);
+  background:var(--panel);
+  color:#e2e8f0;
+  border-radius:11px;
+  padding:12px 4px;
+  min-height:49px;
+  font-size:13px;
+  font-weight:700;
+  cursor:pointer;
+}
+nav button[aria-pressed="true"] {
+  background:#0c3550;
+  border-color:var(--blue);
+  color:white;
+}
+footer {
+  text-align:center;
+  color:#8091a8;
+  font-size:11px;
+  padding:8px;
+  border-top:1px solid #1e293b;
+}
+@media(max-width:480px) {
+  .services {grid-template-columns:1fr}
+  .service {
+    min-height:95px;
+    display:grid;
+    grid-template-columns:55px 1fr;
+    align-items:center;
+    text-align:left;
+    padding:13px;
+    gap:10px;
+  }
+  .service .emoji {
+    grid-row:1;
+    font-size:32px;
+    margin:0;
+    text-align:center;
+  }
+  .service strong {margin:0 0 5px}
+  .service small {font-size:12px}
+  .hero h1 {font-size:23px}
+}
 </style>
 </head>
+
 <body>
+
 <header>
- <div>
-  <div class="brand">Natz1122Labs</div>
-  <div class="tagline">Innovation for Everyone</div>
- </div>
- <a class="home-link" href="/">Main website</a>
+  <div>
+    <div class="brand">Natz1122Labs</div>
+    <div class="tagline">Innovation for Everyone</div>
+  </div>
+  <a class="home-link" href="/">Main website</a>
 </header>
 
 <main>
- <section class="welcome">
-  <h1>Your City in One Glance</h1>
-  <p>News, weather and translation — together in one place.</p>
- </section>
 
- <section class="viewer">
-  <div class="loading" id="loading">Loading Global News…</div>
-  <iframe id="moduleFrame"
-   title="Natz1122Labs Global News"
-   src="/global-news.html"
-   allow="geolocation"
-   referrerpolicy="strict-origin-when-cross-origin"></iframe>
- </section>
+<section class="dashboard" id="dashboard">
+  <div class="hero">
+    <h1>Your City in One Glance</h1>
+    <p>Welcome to Natz1122Labs. Choose a service to get started.</p>
+  </div>
+
+  <div class="services">
+
+    <button class="service" data-page="news" type="button">
+      <span class="emoji">🌍</span>
+      <span>
+        <strong>Global News</strong>
+        <small>Local and international headlines, business, technology and world events.</small>
+      </span>
+    </button>
+
+    <button class="service" data-page="weather" type="button">
+      <span class="emoji">🌦️</span>
+      <span>
+        <strong>Global Weather</strong>
+        <small>Live weather, worldwide interactive map and seven-day forecasts.</small>
+      </span>
+    </button>
+
+    <button class="service" data-page="translator" type="button">
+      <span class="emoji">🗣️</span>
+      <span>
+        <strong>Global Translator</strong>
+        <small>Translate between more than 100 languages.</small>
+      </span>
+    </button>
+
+  </div>
+</section>
+
+<section class="viewer" id="viewer">
+  <div class="viewer-top">
+    <button class="back-link" id="backButton" type="button">
+      ← All Services
+    </button>
+  </div>
+
+  <div class="loading" id="loading">Loading service...</div>
+
+  <iframe
+    id="moduleFrame"
+    title="Natz1122Labs Service"
+    allow="geolocation"
+    referrerpolicy="strict-origin-when-cross-origin">
+  </iframe>
+</section>
+
 </main>
 
 <nav aria-label="Main services">
- <button data-page="news" aria-pressed="true">🌍 News</button>
- <button data-page="weather" aria-pressed="false">🌦️ Weather</button>
- <button data-page="translator" aria-pressed="false">🗣️ Translator</button>
+  <button data-page="news" aria-pressed="false" type="button">🌍 News</button>
+  <button data-page="weather" aria-pressed="false" type="button">🌦️ Weather</button>
+  <button data-page="translator" aria-pressed="false" type="button">🗣️ Translator</button>
 </nav>
 
-<footer>© 2026 Natz1122Labs · Innovation for Everyone</footer>
+<footer>
+  © 2026 Natz1122Labs · Innovation for Everyone
+</footer>
 
 <script>
-(function(){
- const frame=document.getElementById('moduleFrame');
- const loading=document.getElementById('loading');
- const buttons=[...document.querySelectorAll('nav button')];
+(function() {
+  "use strict";
 
- const modules={
-  news:{url:'/global-news.html',title:'Natz1122Labs Global News'},
-  weather:{url:'/global-weather.html',title:'Natz1122Labs Global Weather'},
-  translator:{url:'/translator.html',title:'Natz1122Labs Global Translator'}
- };
+  const dashboard = document.getElementById("dashboard");
+  const viewer = document.getElementById("viewer");
+  const frame = document.getElementById("moduleFrame");
+  const loading = document.getElementById("loading");
+  const backButton = document.getElementById("backButton");
 
- function selectModule(key){
-  const item=modules[key];
-  if(!item)return;
+  const buttons = document.querySelectorAll("[data-page]");
 
-  buttons.forEach(button=>{
-   button.setAttribute('aria-pressed',String(button.dataset.page===key));
-  });
+  const modules = {
+    news: {
+      url: "/global-news.html",
+      title: "Natz1122Labs Global News"
+    },
+    weather: {
+      url: "/global-weather.html",
+      title: "Natz1122Labs Global Weather"
+    },
+    translator: {
+      url: "/translator.html",
+      title: "Natz1122Labs Global Translator"
+    }
+  };
 
-  loading.textContent='Loading '+key+'…';
-  loading.style.display='grid';
-  frame.title=item.title;
+  let currentPage = "";
 
-  if(frame.getAttribute('src')!==item.url){
-   frame.src=item.url;
+  function selectModule(key) {
+    const item = modules[key];
+    if (!item) return;
+
+    currentPage = key;
+
+    dashboard.style.display = "none";
+    viewer.classList.add("active");
+
+    buttons.forEach(button => {
+      button.setAttribute(
+        "aria-pressed",
+        String(button.dataset.page === key)
+      );
+    });
+
+    loading.textContent = "Loading " + item.title + "...";
+    loading.classList.add("active");
+
+    frame.title = item.title;
+
+    if (frame.dataset.loaded !== key) {
+      frame.dataset.loaded = key;
+      frame.src = item.url;
+    } else {
+      loading.classList.remove("active");
+    }
+
+    try {
+      history.replaceState(null, "", "#" + key);
+    } catch(error) {}
+
+    window.scrollTo(0, 0);
   }
 
-  try{history.replaceState(null,'','#'+key)}catch(error){}
- }
+  function showDashboard() {
+    currentPage = "";
 
- frame.addEventListener('load',()=>{
-  loading.style.display='none';
- });
+    viewer.classList.remove("active");
+    dashboard.style.display = "block";
 
- buttons.forEach(button=>{
-  button.addEventListener('click',()=>{
-   selectModule(button.dataset.page);
+    buttons.forEach(button => {
+      button.setAttribute("aria-pressed", "false");
+    });
+
+    frame.src = "about:blank";
+    frame.dataset.loaded = "";
+
+    loading.classList.remove("active");
+
+    try {
+      history.replaceState(null, "", location.pathname);
+    } catch(error) {}
+
+    window.scrollTo(0, 0);
+  }
+
+  frame.addEventListener("load", function() {
+    loading.classList.remove("active");
   });
- });
 
- const initial=location.hash.slice(1);
- if(modules[initial])selectModule(initial);
-
- if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>{
-   navigator.serviceWorker.register('/sw.js').catch(()=>{});
+  buttons.forEach(button => {
+    button.addEventListener("click", function() {
+      selectModule(button.dataset.page);
+    });
   });
- }
+
+  backButton.addEventListener("click", showDashboard);
+
+  const initial = location.hash.slice(1);
+
+  if (modules[initial]) {
+    selectModule(initial);
+  }
+
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function() {
+      navigator.serviceWorker.register("/sw.js").catch(function() {});
+    });
+  }
+
 })();
 </script>
+
 </body>
 </html>
