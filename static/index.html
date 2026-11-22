@@ -2,328 +2,462 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#07111f">
-    <title>NATZ1122 AI Trading Bot V6.1.0</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#07111f">
+<title>NATZ1122 AI Trading Bot V6.1.0</title>
 
-    <style>
-        :root {
-            --bg: #07111f;
-            --panel: #101f32;
-            --panel2: #14263c;
-            --text: #eaf2ff;
-            --muted: #91a4bd;
-            --green: #20d69a;
-            --red: #ff6474;
-            --blue: #55a8ff;
-            --border: #263b55;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            padding: 20px;
-            background: var(--bg);
-            color: var(--text);
-            font-family: Arial, sans-serif;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: auto;
-        }
-
-        header {
-            padding: 22px;
-            background: linear-gradient(135deg, #142b45, #0c192b);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            margin-bottom: 20px;
-        }
-
-        h1 {
-            margin: 0 0 8px;
-            font-size: 25px;
-        }
-
-        .subtitle {
-            color: var(--muted);
-            font-size: 13px;
-        }
-
-        .status {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 8px 13px;
-            border-radius: 20px;
-            background: #49351b;
-            color: #ffd27a;
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-            gap: 14px;
-            margin-bottom: 20px;
-        }
-
-        .card {
-            background: var(--panel);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 20px;
-        }
-
-        .card-label {
-            color: var(--muted);
-            font-size: 13px;
-            margin-bottom: 12px;
-        }
-
-        .value {
-            font-size: 25px;
-            font-weight: bold;
-        }
-
-        .green {
-            color: var(--green);
-        }
-
-        .red {
-            color: var(--red);
-        }
-
-        .blue {
-            color: var(--blue);
-        }
-
-        h2 {
-            font-size: 17px;
-            margin: 0 0 16px;
-        }
-
-        .row {
-            display: flex;
-            justify-content: space-between;
-            gap: 12px;
-            padding: 12px 0;
-            border-bottom: 1px solid var(--border);
-            font-size: 14px;
-        }
-
-        .row:last-child {
-            border-bottom: none;
-        }
-
-        .label {
-            color: var(--muted);
-        }
-
-        .notice {
-            padding: 15px;
-            border: 1px solid #27634f;
-            background: #102c28;
-            border-radius: 12px;
-            color: #a7f4d7;
-            line-height: 1.6;
-            font-size: 13px;
-        }
-
-        .warning {
-            margin-top: 14px;
-            padding: 14px;
-            border: 1px solid #765a2b;
-            background: #302719;
-            border-radius: 12px;
-            color: #ffd27a;
-            font-size: 13px;
-            line-height: 1.5;
-        }
-
-        footer {
-            text-align: center;
-            color: var(--muted);
-            font-size: 12px;
-            padding: 25px 0 10px;
-        }
-
-        @media (max-width: 500px) {
-            body {
-                padding: 12px;
-            }
-
-            h1 {
-                font-size: 20px;
-            }
-
-            .value {
-                font-size: 22px;
-            }
-        }
-    </style>
+<style>
+:root {
+    --bg:#07111f;
+    --panel:#101f32;
+    --panel2:#14263c;
+    --text:#eaf2ff;
+    --muted:#91a4bd;
+    --green:#20d69a;
+    --red:#ff6474;
+    --blue:#55a8ff;
+    --border:#263b55;
+    --gold:#ffd27a;
+}
+* {box-sizing:border-box}
+body {
+    margin:0;padding:16px;
+    background:var(--bg);color:var(--text);
+    font-family:Arial,sans-serif;
+}
+.container {max-width:1100px;margin:auto}
+header,.card {
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:18px;margin-bottom:16px;
+}
+header {
+    background:linear-gradient(135deg,#142b45,#0c192b);
+}
+h1 {font-size:22px;margin:0 0 7px}
+h2 {font-size:17px;margin:0 0 15px}
+.subtitle {color:var(--muted);font-size:12px}
+.status {
+    display:inline-block;margin-top:14px;
+    padding:8px 13px;border-radius:20px;
+    font-size:11px;font-weight:bold;
+    background:#49351b;color:var(--gold);
+}
+.running {background:#103c30;color:var(--green)}
+.stopped {background:#49351b;color:var(--gold)}
+.error {background:#491f2a;color:var(--red)}
+.grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(145px,1fr));
+    gap:12px;margin-bottom:16px;
+}
+.metric {
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:12px;padding:16px;
+}
+.card-label {color:var(--muted);font-size:12px;margin-bottom:10px}
+.value {font-size:22px;font-weight:bold;overflow-wrap:anywhere}
+.green {color:var(--green)}
+.red {color:var(--red)}
+.blue {color:var(--blue)}
+.muted {color:var(--muted)}
+.row {
+    display:flex;justify-content:space-between;
+    gap:12px;padding:11px 0;
+    border-bottom:1px solid var(--border);
+    font-size:13px;
+}
+.row:last-child {border-bottom:none}
+.label {color:var(--muted)}
+.controls {
+    display:grid;grid-template-columns:1fr 1fr;
+    gap:12px;margin:16px 0;
+}
+button {
+    border:0;border-radius:10px;
+    padding:15px 10px;font-size:14px;
+    font-weight:bold;cursor:pointer;
+    min-height:52px;
+}
+button:disabled {opacity:.45;cursor:not-allowed}
+.start {background:#137d57;color:white}
+.stop {background:#a92d42;color:white}
+.refresh {background:#23466d;color:white}
+.connect {background:#765a2b;color:white}
+.message {
+    padding:12px;border-radius:9px;
+    margin:12px 0;font-size:12px;
+    line-height:1.5;display:none;
+    overflow-wrap:anywhere;
+}
+.notice {background:#102c28;color:#a7f4d7;border:1px solid #27634f}
+.warning {background:#302719;color:var(--gold);border:1px solid #765a2b}
+.failure {background:#351c27;color:#ff9eaa;border:1px solid #803449}
+.workers {
+    display:grid;grid-template-columns:repeat(2,1fr);
+    gap:9px;
+}
+.worker {
+    background:var(--panel2);
+    padding:12px;border-radius:9px;
+    font-size:12px;
+}
+.good {color:var(--green)}
+.bad {color:var(--red)}
+footer {
+    text-align:center;color:var(--muted);
+    font-size:11px;padding:20px 0;
+}
+@media(max-width:500px) {
+    body {padding:10px}
+    h1 {font-size:19px}
+    .value {font-size:19px}
+    .controls {gap:8px}
+}
+</style>
 </head>
 
 <body>
 <div class="container">
 
-    <header>
-        <h1>⚡ NATZ1122 AI TRADING BOT</h1>
-        <div class="subtitle">
-            Version 6.1.0 | Automated Market Analysis
-        </div>
-        <div class="status" id="botStatus">
-            PAPER TRADING — ENGINE NOT RUNNING
-        </div>
-    </header>
+<header>
+    <h1>⚡ NATZ1122 AI TRADING BOT</h1>
+    <div class="subtitle">Version 6.1.0 | Automated Market Analysis</div>
+    <div class="status stopped" id="botStatus">CONNECTING...</div>
 
-    <div class="grid">
-        <div class="card">
-            <div class="card-label">Account Balance</div>
-            <div class="value blue" id="balance">50.00 USDT</div>
-        </div>
-
-        <div class="card">
-            <div class="card-label">Account Equity</div>
-            <div class="value" id="equity">50.00 USDT</div>
-        </div>
-
-        <div class="card">
-            <div class="card-label">Realized PNL</div>
-            <div class="value green" id="pnl">0.00 USDT</div>
-        </div>
-
-        <div class="card">
-            <div class="card-label">Total Trades</div>
-            <div class="value" id="trades">0</div>
-        </div>
+    <div class="controls">
+        <button class="start" id="startBtn" disabled>
+            ▶ START BOT
+        </button>
+        <button class="stop" id="stopBtn" disabled>
+            ■ STOP BOT
+        </button>
     </div>
 
-    <div class="grid">
-        <section class="card">
-            <h2>Trading Configuration</h2>
-
-            <div class="row">
-                <span class="label">Trading Pair</span>
-                <strong>BTC-USDT</strong>
-            </div>
-
-            <div class="row">
-                <span class="label">Exchange Data</span>
-                <strong>OKX Public Data</strong>
-            </div>
-
-            <div class="row">
-                <span class="label">Trading Mode</span>
-                <strong class="green">Paper Trading</strong>
-            </div>
-
-            <div class="row">
-                <span class="label">Simulated Leverage</span>
-                <strong>5X</strong>
-            </div>
-
-            <div class="row">
-                <span class="label">Long Positions</span>
-                <strong class="green">Enabled</strong>
-            </div>
-
-            <div class="row">
-                <span class="label">Short Positions</span>
-                <strong class="green">Enabled</strong>
-            </div>
-        </section>
-
-        <section class="card">
-            <h2>Safety Protection</h2>
-
-            <div class="row">
-                <span class="label">Real Trading</span>
-                <strong class="green">DISABLED</strong>
-            </div>
-
-            <div class="row">
-                <span class="label">Real Orders</span>
-                <strong class="green">DISABLED</strong>
-            </div>
-
-            <div class="row">
-                <span class="label">Authenticated API</span>
-                <strong class="green">NOT CONFIGURED</strong>
-            </div>
-
-            <div class="row">
-                <span class="label">Take Profit</span>
-                <strong>10%</strong>
-            </div>
-
-            <div class="row">
-                <span class="label">Stop Loss</span>
-                <strong>2%</strong>
-            </div>
-
-            <div class="row">
-                <span class="label">Maximum Exposure</span>
-                <strong>100 USDT</strong>
-            </div>
-        </section>
+    <div class="controls">
+        <button class="refresh" id="refreshBtn">
+            ↻ REFRESH STATUS
+        </button>
+        <button class="connect" id="connectBtn">
+            🔐 RECONNECT
+        </button>
     </div>
+
+    <div id="message" class="message"></div>
+</header>
+
+<div class="grid">
+    <div class="metric">
+        <div class="card-label">Account Balance</div>
+        <div class="value blue" id="balance">-- USDT</div>
+    </div>
+    <div class="metric">
+        <div class="card-label">Account Equity</div>
+        <div class="value" id="equity">-- USDT</div>
+    </div>
+    <div class="metric">
+        <div class="card-label">Realized PNL</div>
+        <div class="value green" id="pnl">-- USDT</div>
+    </div>
+    <div class="metric">
+        <div class="card-label">Total Trades</div>
+        <div class="value" id="trades">--</div>
+    </div>
+</div>
+
+<div class="grid">
+    <section class="card">
+        <h2>Trading Configuration</h2>
+        <div class="row"><span class="label">Trading Pair</span><strong>BTC-USDT</strong></div>
+        <div class="row"><span class="label">Exchange</span><strong>OKX Public Data</strong></div>
+        <div class="row"><span class="label">Trading Mode</span><strong class="green">Paper Trading</strong></div>
+        <div class="row"><span class="label">Leverage</span><strong>5X</strong></div>
+        <div class="row"><span class="label">Long Positions</span><strong class="green">Enabled</strong></div>
+        <div class="row"><span class="label">Short Positions</span><strong class="green">Enabled</strong></div>
+    </section>
 
     <section class="card">
-        <h2>Trading Engine</h2>
-
-        <div class="row">
-            <span class="label">Engine Status</span>
-            <strong class="red" id="engineStatus">NOT RUNNING</strong>
-        </div>
-
-        <div class="row">
-            <span class="label">Open Position</span>
-            <strong id="position">None</strong>
-        </div>
-
-        <div class="row">
-            <span class="label">Winning Trades</span>
-            <strong id="wins">0</strong>
-        </div>
-
-        <div class="row">
-            <span class="label">Losing Trades</span>
-            <strong id="losses">0</strong>
-        </div>
-
-        <div class="warning">
-            The dashboard is currently displaying the fresh V6.1.0
-            paper-session configuration. The trading engine must be
-            started separately through the backend. This page does not
-            start trading or place orders.
-        </div>
+        <h2>Safety Protection</h2>
+        <div class="row"><span class="label">Real Trading</span><strong class="green">DISABLED</strong></div>
+        <div class="row"><span class="label">Real Orders</span><strong class="green">DISABLED</strong></div>
+        <div class="row"><span class="label">Authenticated Trading API</span><strong class="green">NONE</strong></div>
+        <div class="row"><span class="label">Take Profit</span><strong>10%</strong></div>
+        <div class="row"><span class="label">Stop Loss</span><strong>2%</strong></div>
+        <div class="row"><span class="label">Maximum Exposure</span><strong>100 USDT</strong></div>
     </section>
+</div>
 
-    <section class="card" style="margin-top:20px">
-        <h2>System Safety</h2>
+<section class="card">
+    <h2>Trading Engine</h2>
+    <div class="row"><span class="label">Engine Status</span><strong id="engineStatus" class="red">UNKNOWN</strong></div>
+    <div class="row"><span class="label">BTC Price</span><strong id="price">--</strong></div>
+    <div class="row"><span class="label">Market Trend</span><strong id="trend">--</strong></div>
+    <div class="row"><span class="label">Momentum</span><strong id="momentum">--</strong></div>
+    <div class="row"><span class="label">RSI</span><strong id="rsi">--</strong></div>
+    <div class="row"><span class="label">OKX Connection</span><strong id="okx">UNKNOWN</strong></div>
+    <div class="row"><span class="label">Open Position</span><strong id="position">None</strong></div>
+    <div class="row"><span class="label">Winning Trades</span><strong id="wins">0</strong></div>
+    <div class="row"><span class="label">Losing Trades</span><strong id="losses">0</strong></div>
+    <div class="row"><span class="label">Unrealized PNL</span><strong id="unrealized">-- USDT</strong></div>
+    <div class="row"><span class="label">Last Update</span><strong id="lastUpdate">Waiting...</strong></div>
+</section>
 
-        <div class="notice">
-            ✓ Paper trading only<br>
-            ✓ Real trading disabled<br>
-            ✓ Real orders disabled<br>
-            ✓ Fresh 50 USDT paper session<br>
-            ✓ Previous V6.0.8 positions and history excluded<br>
-            ✓ OKX public market data only
-        </div>
-    </section>
+<section class="card">
+    <h2>Worker Health</h2>
+    <div class="workers">
+        <div class="worker">Supervisor: <strong id="supervisor">--</strong></div>
+        <div class="worker">Price Worker: <strong id="priceWorker">--</strong></div>
+        <div class="worker">Candle Worker: <strong id="candleWorker">--</strong></div>
+        <div class="worker">Engine Worker: <strong id="engineWorker">--</strong></div>
+    </div>
+</section>
 
-    <footer>
-        NATZ1122 AI TRADING BOT V6.1.0<br>
-        Innovation for Everyone
-    </footer>
+<section class="card">
+    <h2>System Safety</h2>
+    <div class="notice">
+        ✓ Paper trading only<br>
+        ✓ Real trading disabled<br>
+        ✓ Real orders disabled<br>
+        ✓ OKX public market data only<br>
+        ✓ Fresh V6.1.0 session retained<br>
+        ✓ No authenticated exchange API
+    </div>
+    <div class="warning">
+        START activates simulated paper trading.
+        STOP stops the workers but preserves any open paper position.
+        No real orders are placed.
+    </div>
+</section>
+
+<footer>
+    NATZ1122 AI TRADING BOT V6.1.0<br>
+    Innovation for Everyone
+</footer>
 
 </div>
+
+<script>
+"use strict";
+
+const API = "";
+let appPassword = null;
+let authenticated = false;
+let authBlocked = false;
+let busy = false;
+let pollTimer = null;
+
+const $ = id => document.getElementById(id);
+
+function showMessage(text, type="notice") {
+    const box = $("message");
+    box.className = "message " + type;
+    box.textContent = text;
+    box.style.display = "block";
+}
+
+function hideMessage() {
+    $("message").style.display = "none";
+}
+
+function setWorker(id, alive) {
+    const element = $(id);
+    element.textContent = alive ? "RUNNING" : "STOPPED";
+    element.className = alive ? "good" : "bad";
+}
+
+function setButtons(running) {
+    $("startBtn").disabled = busy || running || !authenticated;
+    $("stopBtn").disabled = busy || !running || !authenticated;
+    $("refreshBtn").disabled = busy;
+}
+
+function getPassword() {
+    const password = window.prompt(
+        "Enter your NATZ1122 dashboard password:"
+    );
+
+    if (password === null || !password.trim()) {
+        throw new Error("Password entry cancelled.");
+    }
+
+    appPassword = password;
+}
+
+async function apiRequest(path, method="GET") {
+    if (!appPassword) getPassword();
+
+    const authorization = "Basic " + btoa("natz:" + appPassword);
+
+    const response = await fetch(API + path, {
+        method,
+        cache: "no-store",
+        headers: {
+            "Authorization": authorization,
+            "Accept": "application/json"
+        }
+    });
+
+    if (response.status === 401) {
+        appPassword = null;
+        authenticated = false;
+        authBlocked = true;
+        setButtons(false);
+        throw new Error("Incorrect password or authentication expired. Tap RECONNECT.");
+    }
+
+    if (!response.ok) {
+        const body = await response.text();
+        throw new Error("Server error " + response.status + ": " + body.slice(0,300));
+    }
+
+    authenticated = true;
+    authBlocked = false;
+    return response.json();
+}
+
+function renderStatus(data) {
+    const account = data.account || {};
+    const workers = data.workers || {};
+    const position = data.position;
+
+    const running = data.running === true;
+
+    $("botStatus").textContent = running
+        ? "PAPER TRADING — ENGINE RUNNING"
+        : "PAPER TRADING — ENGINE STOPPED";
+
+    $("botStatus").className = "status " + (running ? "running" : "stopped");
+
+    $("engineStatus").textContent = running ? "RUNNING" : "NOT RUNNING";
+    $("engineStatus").className = running ? "green" : "red";
+
+    $("balance").textContent = Number(account.balance || 0).toFixed(2) + " USDT";
+    $("equity").textContent = Number(account.equity || 0).toFixed(2) + " USDT";
+
+    const pnl = Number(account.realized_pnl || 0);
+    $("pnl").textContent = pnl.toFixed(4) + " USDT";
+    $("pnl").className = pnl >= 0 ? "value green" : "value red";
+
+    $("trades").textContent = account.total_trades ?? 0;
+    $("wins").textContent = account.winning_trades ?? 0;
+    $("losses").textContent = account.losing_trades ?? 0;
+
+    $("price").textContent = data.price == null
+        ? "--"
+        : Number(data.price).toLocaleString("en-US", {maximumFractionDigits:2}) + " USDT";
+
+    $("trend").textContent = data.trend || "WAITING";
+    $("momentum").textContent = data.momentum_percent == null
+        ? "--"
+        : Number(data.momentum_percent).toFixed(6) + "%";
+
+    $("rsi").textContent = data.rsi == null
+        ? "--"
+        : Number(data.rsi).toFixed(2);
+
+    $("okx").textContent = data.okx_connected ? "CONNECTED" : "DISCONNECTED";
+    $("okx").className = data.okx_connected ? "good" : "bad";
+
+    $("position").textContent = position
+        ? position.direction + " @ " + Number(position.entry_price).toFixed(2)
+        : "None";
+
+    $("unrealized").textContent =
+        Number(account.unrealized_pnl || 0).toFixed(4) + " USDT";
+
+    setWorker("supervisor", workers.supervisor);
+    setWorker("priceWorker", workers.price);
+    setWorker("candleWorker", workers.candles);
+    setWorker("engineWorker", workers.engine);
+
+    $("lastUpdate").textContent = new Date().toLocaleTimeString();
+
+    setButtons(running);
+
+    if (running && !workers.engine) {
+        showMessage(
+            "Warning: The bot is marked running, but the engine worker is not alive. Check Render runtime logs.",
+            "failure"
+        );
+    } else if (data.price_error) {
+        showMessage("Market data warning: " + data.price_error, "warning");
+    } else {
+        hideMessage();
+    }
+}
+
+async function refreshStatus() {
+    if (busy || authBlocked) return;
+
+    try {
+        const data = await apiRequest("/api/status");
+        renderStatus(data);
+    } catch (error) {
+        showMessage(error.message, "failure");
+        if (!authBlocked) {
+            $("botStatus").textContent = "CONNECTION ERROR";
+            $("botStatus").className = "status error";
+        }
+        setButtons(false);
+    }
+}
+
+async function botAction(action) {
+    if (busy || authBlocked) return;
+
+    busy = true;
+    setButtons(false);
+    showMessage(
+        action === "start"
+            ? "Sending paper-trading start command..."
+            : "Sending paper-trading stop command...",
+        "warning"
+    );
+
+    try {
+        const result = await apiRequest(
+            "/api/" + action,
+            "POST"
+        );
+
+        showMessage(result.message || "Command accepted.", "notice");
+
+        if (result.status) {
+            renderStatus(result.status);
+        }
+
+        await refreshStatus();
+
+    } catch (error) {
+        showMessage(error.message, "failure");
+    } finally {
+        busy = false;
+        if (!authBlocked) await refreshStatus();
+    }
+}
+
+$("startBtn").addEventListener("click", () => botAction("start"));
+$("stopBtn").addEventListener("click", () => botAction("stop"));
+
+$("refreshBtn").addEventListener("click", () => {
+    hideMessage();
+    refreshStatus();
+});
+
+$("connectBtn").addEventListener("click", () => {
+    appPassword = null;
+    authenticated = false;
+    authBlocked = false;
+    hideMessage();
+    refreshStatus();
+});
+
+refreshStatus();
+pollTimer = setInterval(refreshStatus, 5000);
+</script>
+
 </body>
 </html>
- 
