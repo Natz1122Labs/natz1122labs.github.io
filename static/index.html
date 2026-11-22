@@ -1,0 +1,329 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#07111f">
+    <title>NATZ1122 AI Trading Bot V6.1.0</title>
+
+    <style>
+        :root {
+            --bg: #07111f;
+            --panel: #101f32;
+            --panel2: #14263c;
+            --text: #eaf2ff;
+            --muted: #91a4bd;
+            --green: #20d69a;
+            --red: #ff6474;
+            --blue: #55a8ff;
+            --border: #263b55;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            background: var(--bg);
+            color: var(--text);
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        header {
+            padding: 22px;
+            background: linear-gradient(135deg, #142b45, #0c192b);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            margin: 0 0 8px;
+            font-size: 25px;
+        }
+
+        .subtitle {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .status {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 13px;
+            border-radius: 20px;
+            background: #49351b;
+            color: #ffd27a;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px;
+        }
+
+        .card-label {
+            color: var(--muted);
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+
+        .value {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .green {
+            color: var(--green);
+        }
+
+        .red {
+            color: var(--red);
+        }
+
+        .blue {
+            color: var(--blue);
+        }
+
+        h2 {
+            font-size: 17px;
+            margin: 0 0 16px;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 14px;
+        }
+
+        .row:last-child {
+            border-bottom: none;
+        }
+
+        .label {
+            color: var(--muted);
+        }
+
+        .notice {
+            padding: 15px;
+            border: 1px solid #27634f;
+            background: #102c28;
+            border-radius: 12px;
+            color: #a7f4d7;
+            line-height: 1.6;
+            font-size: 13px;
+        }
+
+        .warning {
+            margin-top: 14px;
+            padding: 14px;
+            border: 1px solid #765a2b;
+            background: #302719;
+            border-radius: 12px;
+            color: #ffd27a;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        footer {
+            text-align: center;
+            color: var(--muted);
+            font-size: 12px;
+            padding: 25px 0 10px;
+        }
+
+        @media (max-width: 500px) {
+            body {
+                padding: 12px;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            .value {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+
+    <header>
+        <h1>⚡ NATZ1122 AI TRADING BOT</h1>
+        <div class="subtitle">
+            Version 6.1.0 | Automated Market Analysis
+        </div>
+        <div class="status" id="botStatus">
+            PAPER TRADING — ENGINE NOT RUNNING
+        </div>
+    </header>
+
+    <div class="grid">
+        <div class="card">
+            <div class="card-label">Account Balance</div>
+            <div class="value blue" id="balance">50.00 USDT</div>
+        </div>
+
+        <div class="card">
+            <div class="card-label">Account Equity</div>
+            <div class="value" id="equity">50.00 USDT</div>
+        </div>
+
+        <div class="card">
+            <div class="card-label">Realized PNL</div>
+            <div class="value green" id="pnl">0.00 USDT</div>
+        </div>
+
+        <div class="card">
+            <div class="card-label">Total Trades</div>
+            <div class="value" id="trades">0</div>
+        </div>
+    </div>
+
+    <div class="grid">
+        <section class="card">
+            <h2>Trading Configuration</h2>
+
+            <div class="row">
+                <span class="label">Trading Pair</span>
+                <strong>BTC-USDT</strong>
+            </div>
+
+            <div class="row">
+                <span class="label">Exchange Data</span>
+                <strong>OKX Public Data</strong>
+            </div>
+
+            <div class="row">
+                <span class="label">Trading Mode</span>
+                <strong class="green">Paper Trading</strong>
+            </div>
+
+            <div class="row">
+                <span class="label">Simulated Leverage</span>
+                <strong>5X</strong>
+            </div>
+
+            <div class="row">
+                <span class="label">Long Positions</span>
+                <strong class="green">Enabled</strong>
+            </div>
+
+            <div class="row">
+                <span class="label">Short Positions</span>
+                <strong class="green">Enabled</strong>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Safety Protection</h2>
+
+            <div class="row">
+                <span class="label">Real Trading</span>
+                <strong class="green">DISABLED</strong>
+            </div>
+
+            <div class="row">
+                <span class="label">Real Orders</span>
+                <strong class="green">DISABLED</strong>
+            </div>
+
+            <div class="row">
+                <span class="label">Authenticated API</span>
+                <strong class="green">NOT CONFIGURED</strong>
+            </div>
+
+            <div class="row">
+                <span class="label">Take Profit</span>
+                <strong>10%</strong>
+            </div>
+
+            <div class="row">
+                <span class="label">Stop Loss</span>
+                <strong>2%</strong>
+            </div>
+
+            <div class="row">
+                <span class="label">Maximum Exposure</span>
+                <strong>100 USDT</strong>
+            </div>
+        </section>
+    </div>
+
+    <section class="card">
+        <h2>Trading Engine</h2>
+
+        <div class="row">
+            <span class="label">Engine Status</span>
+            <strong class="red" id="engineStatus">NOT RUNNING</strong>
+        </div>
+
+        <div class="row">
+            <span class="label">Open Position</span>
+            <strong id="position">None</strong>
+        </div>
+
+        <div class="row">
+            <span class="label">Winning Trades</span>
+            <strong id="wins">0</strong>
+        </div>
+
+        <div class="row">
+            <span class="label">Losing Trades</span>
+            <strong id="losses">0</strong>
+        </div>
+
+        <div class="warning">
+            The dashboard is currently displaying the fresh V6.1.0
+            paper-session configuration. The trading engine must be
+            started separately through the backend. This page does not
+            start trading or place orders.
+        </div>
+    </section>
+
+    <section class="card" style="margin-top:20px">
+        <h2>System Safety</h2>
+
+        <div class="notice">
+            ✓ Paper trading only<br>
+            ✓ Real trading disabled<br>
+            ✓ Real orders disabled<br>
+            ✓ Fresh 50 USDT paper session<br>
+            ✓ Previous V6.0.8 positions and history excluded<br>
+            ✓ OKX public market data only
+        </div>
+    </section>
+
+    <footer>
+        NATZ1122 AI TRADING BOT V6.1.0<br>
+        Innovation for Everyone
+    </footer>
+
+</div>
+</body>
+</html>
+ 
